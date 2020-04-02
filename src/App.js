@@ -21,45 +21,29 @@ class App extends Component {
   
     render() {
       const {presentations} = this.state
-      console.log("api response", presentations)
+      console.log("api response 1", presentations[1])
       
       return (
-        
-           
-                     <p>hello</p>   
-                 
+      <>
+        {presentations.length > 0 ? (
+          presentations[1].map(presentation => (
             
-  
-        
-    )
-  
-    }
-  }
-  
-  export default App
-
-
-//   render() {
-//     const {presentations} = this.state
-//     return (
+            <p>{presentation.id} hello</p>
       
-//       {presentations.length > 0 ? (
-        
-//         presentations.map((presentation,index) => (
-//             <p>
-//              {presentation.id}
+          ))
+        ) : (
+           <p>no data</p>
+        )
+      }
+      </>
+           
+                       
+      )
+      
+    }
+
+}
+
+
+export default App;
   
-//             </p>
-          
-
-            
-//         ))
-//       ) : (
-//         <li>No User Data</li>
-//       )}
-     
-//     );
-//   }
-// }
-
-// export default App;
