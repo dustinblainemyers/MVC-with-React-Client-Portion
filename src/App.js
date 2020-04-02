@@ -14,7 +14,7 @@ class App extends Component {
     const data = await response.json();
 
     this.setState({
-        presentations: [this.state.presentations, data]
+        presentations: data
       });
   
     }
@@ -26,7 +26,7 @@ class App extends Component {
       return (
       <>
         {presentations.length > 0 ? (
-          presentations[1].map(presentation => (
+          presentations.map(presentation => (
             
             <p>{presentation.id} hello</p>
       
