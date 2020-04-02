@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import AudienceJoinPres from './AudienceJoinPres'
 import "../App.css";
-import { Link } from 'react-router-dom';
+import Nav from './nav'
 
 class Audience extends Component {
   
@@ -11,11 +11,12 @@ class Audience extends Component {
       
       
       return (
-      <>
-       <Link to={`/audience/join-presentation`}>
-        Join A Presentation
-      </Link>
-      </>
+<div>
+
+
+      
+       
+</div>
            
                        
       )

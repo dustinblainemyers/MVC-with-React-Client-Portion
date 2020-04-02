@@ -3,18 +3,22 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
 import Audience from './components/audience'
 import AudienceJoinPres from './components/AudienceJoinPres'
-import { Link } from 'react-router-dom';
+
+import Nav from './components/nav'
 
 class App extends Component {
- 
+  
   render() {
-      
+      const Links = [
+        {href: "/audience/join-presentation", name: "Join Presentation"},
+        {href: "https://www.google.com", name: "Google"}
+     ]
       
     return (
       <Router>
       <Route path="/" exact>
         
-        <Link to={`/audience/`}>Audience </Link>
+      <Nav link={Links}/>
         
         
       </Route>
