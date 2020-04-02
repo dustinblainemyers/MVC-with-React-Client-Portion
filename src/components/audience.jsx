@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import AudienceJoinPres from './AudienceJoinPres'
 import "../App.css";
+import { Link } from 'react-router-dom';
 
 class Audience extends Component {
   
@@ -11,7 +12,9 @@ class Audience extends Component {
       
       return (
       <>
-       <AudienceJoinPres/>
+       <Link to={`/audience/join-presentation`}>
+        Join A Presentation
+      </Link>
       </>
            
                        
