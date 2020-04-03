@@ -27,18 +27,18 @@ class AudienceJoinPres extends Component {
           
           
           return (
-          <>
+          <div className="contained">
             {presentations.length > 0 ? (
               presentations.map(presentation => (
-                
+                <p>
                 <span>{presentation.lesson_name} {presentation.name} {presentation.green_light}</span>
-          
+                </p>
               ))
             ) : (
                <p>no data</p>
             )
           }
-          </>
+          </div>
                
                            
           )

@@ -142,3 +142,12 @@ h1, h2, h3, p {
   margin:0 auto;
   max-width: 90vw;
 }
+
+
+
+.contained {
+  padding-top: 4%;
+  position:relative;
+  margin:0 auto;
+  max-width: 80%;
+}

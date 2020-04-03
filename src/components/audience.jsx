@@ -37,11 +37,11 @@ class Audience extends Component {
 <Nav link={Links}/>
             {users.length > 0 ? (
               users.map(user => (
-                <>
+                <div className="contained">
                 <p>{user.name} hello</p>
                 <p> your user id is {user.id}</p>
                 <Link to={`/audience/join-presentation/${user.id}`}>See your presentations</Link>
-                </> 
+                </div> 
               ))
             ) : (
                <p>no data</p>
