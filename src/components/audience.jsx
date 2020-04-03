@@ -27,24 +27,27 @@ class Audience extends Component {
           console.log('users', users)
 
           const Links = [
-            {href: "/audience/join-presentation", name: "Join Presentation"},
-            {href: "/audience" , name: "Audience"}
+            {href: "/", name: "Home"},
+            
          ]
           
           return (
           <>
 
-<Nav link={Links}/>
+            <Nav link={Links}/>
+            <h1>Users</h1>
+            <h3>Click a user to view the presentation they are currently participating in.</h3>
             {users.length > 0 ? (
               users.map(user => (
                 <div className="contained">
-                <p>{user.name} hello</p>
-                <p> your user id is {user.id}</p>
-                <Link to={`/audience/join-presentation/${user.id}`}>See your presentations</Link>
+                <p>{user.name} </p>
+                <p> 
+                <Link to={`/audience/join-presentation/${user.id}`}>  Participant Link</Link>
+                </p> 
                 </div> 
               ))
             ) : (
-               <p>no data</p>
+               <p>No Data</p>
             )
           }
           </>
