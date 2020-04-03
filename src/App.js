@@ -10,15 +10,17 @@ class App extends Component {
   
   render() {
       const Links = [
-        {href: "/audience/join-presentation", name: "Join Presentation"},
+        {href: "/presenter", name: "Presenter"},
         {href: "/audiences" , name: "Audience"}
      ]
       
     return (
       <Router>
       <Route path="/" exact>
-        
+      <div className="container">
+      <h1>Green Light Red Light</h1>
       <Nav link={Links}/>
+      </div>
         
         
       </Route>
