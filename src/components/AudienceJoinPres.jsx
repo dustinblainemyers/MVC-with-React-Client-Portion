@@ -31,7 +31,7 @@ class AudienceJoinPres extends Component {
             {presentations.length > 0 ? (
               presentations.map(presentation => (
                 
-                <p>{presentation.id}</p>
+                <span>{presentation.lesson_name} {presentation.name} {presentation.green_light}</span>
           
               ))
             ) : (

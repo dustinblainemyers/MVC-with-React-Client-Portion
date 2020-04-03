@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
 import Audience from './components/audience'
 import AudienceJoinPres from './components/AudienceJoinPres'
-import NavBar from "./components/NavBar";
-import { useAuth0 } from "./react-auth0-spa";
 
 import Nav from './components/nav'
 
@@ -21,7 +19,7 @@ class App extends Component {
       <Route path="/" exact>
         
       <Nav link={Links}/>
-      <NavBar/>
+        
         
       </Route>
       <Route path="/audiences" component={Audience} />
