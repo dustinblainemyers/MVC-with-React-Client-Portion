@@ -11,7 +11,7 @@ class App extends Component {
   render() {
       const Links = [
         {href: "/audience/join-presentation", name: "Join Presentation"},
-        {href: "https://www.google.com", name: "Google"}
+        {href: "/audiences" , name: "Audience"}
      ]
       
     return (
@@ -22,8 +22,8 @@ class App extends Component {
         
         
       </Route>
-      <Route path="/audience" component={Audience} />
-      <Route path="/audience/join-presentation" component={AudienceJoinPres} />
+      <Route path="/audiences" component={Audience} />
+      <Route path="/audience/join-presentation/:user_id?" component={AudienceJoinPres} />
     </Router>
          
                      

@@ -12,13 +12,13 @@ class Nav extends Component {
       console.log("link", link)
       
       return (
-
+    <nav>
       <ul class="nav">
         {link.length > 0 ? (
       
           link.map(link => (
+          
             
-            <nav>
 
               
               
@@ -26,17 +26,13 @@ class Nav extends Component {
                     {link.name}
                 </a>
               
-              
-            
-            </nav>
-          
-      
           ))
         ) : (
            <p>no data</p>
         )
       }
     </ul>
+    </nav>
       
            
                        

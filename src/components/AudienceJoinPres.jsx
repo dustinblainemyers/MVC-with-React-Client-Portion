@@ -13,9 +13,9 @@ class AudienceJoinPres extends Component {
     
       async componentDidMount() {
         
-        const response = await fetch(`http://localhost:3333/join-presentation`);
+        const response = await fetch(`http://localhost:3333/join-presentation/${this.props.match.params.user_id}`);
         const data = await response.json();
-    
+         
         this.setState({
             presentations: data
           });
@@ -24,14 +24,14 @@ class AudienceJoinPres extends Component {
       
         render() {
           const {presentations} = this.state
-          console.log("api response 1", presentations[1])
+          
           
           return (
           <>
             {presentations.length > 0 ? (
               presentations.map(presentation => (
                 
-                <p>{presentation.id} hello</p>
+                <p>{presentation.id}</p>
           
               ))
             ) : (
