@@ -128,3 +128,42 @@ header .img {
   }
 
 }
+
+h1, h2, h3, p {
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.container {
+  padding-top: 4%;
+  position:relative;
+  margin:0 auto;
+  max-width: 90vw;
+}
+
+
+
+.contained {
+  padding-top: 4%;
+  position:relative;
+  margin:0 auto;
+  max-width: 80%;
+  padding-bottom:30px;
+}
+
+.false {
+   background-color: #ff0000;
+   width: 20px;
+   height: 20px;
+
+}
+
+
+.true {
+  background-color: green;
+  width: 20px;
+  height: 20px;
+
+}
