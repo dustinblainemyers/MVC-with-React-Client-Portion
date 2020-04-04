@@ -24,21 +24,34 @@ class AudienceJoinPres extends Component {
       
         render() {
           const {presentations} = this.state
-          
+          const Links = [
+            {href: "/", name: "Home"},
+            {href:"/audiences" , name: "Participant List"}
+            
+         ]
+        
+
+        
           
           return (
-          <>
-            {presentations.length > 0 ? (
-              presentations.map(presentation => (
-                
-                <p>{presentation.id}</p>
           
+          <div className="contained">
+          <Nav link={Links}/>
+          <h1>Your Presentations</h1>
+          <hr></hr>
+            {presentations.length > 0 ? (
+              presentations.map(presentation =>  (
+                <p>
+                <span>{presentation.lesson_name} {presentation.green_light}</span>
+                <p className={presentation.green_light + ''}></p>
+                
+                </p>
               ))
             ) : (
-               <p>no data</p>
+               <p>You are not a audience member of any presenations.</p>
             )
           }
-          </>
+          </div>
                
                            
           )
