@@ -48,7 +48,7 @@ class Presenter extends Component {
                 </p>
               ))
             ) : (
-               <p>You are not a audience member of any presenations.</p>
+               <p>No current presentations found.</p>
             )
           }
           </div>
