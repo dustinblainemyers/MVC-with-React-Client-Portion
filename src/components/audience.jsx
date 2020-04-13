@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AudienceJoinPres from './AudienceJoinPres'
 import "../App.css";
 import Nav from './nav'
 
