@@ -7,9 +7,9 @@ import Presenter from './components/presenter'
 
 import Nav from './components/nav'
 
-class App extends Component {
+function App(props) {
   
-  render() {
+  
       const Links = [
         {href: "/presenter", name: "Presenter"},
         {href: "/audiences" , name: "Audience"}
@@ -33,7 +33,7 @@ class App extends Component {
                      
     )
     
-  }
+  
 
 }
 
