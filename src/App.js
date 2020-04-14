@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NavBar from "./components/NavBar";
+import Audience from "./components/audience"
 import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
@@ -31,7 +32,7 @@ function App(props) {
 
       <h1>Green Light Red Light</h1>
     
-      {props.email}
+      
       <Nav link={Links}/>
 
 
@@ -39,7 +40,7 @@ function App(props) {
         
         
       </Route>
-      
+      <Route path= "/audiences" component={Audience}/>
       <Route path="/audience/join-presentation/:user_id?" component={AudienceJoinPres} />
       <Route path="/presenter" component={Presenter} />
     </Router>

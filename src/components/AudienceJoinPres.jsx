@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
-
+import { useAuth0 } from "../react-auth0-spa";
 import Nav from './nav'
 
 import "../App.css";
 
 function AudienceJoinPres(props) {
 
+
+  const { loading, user } = useAuth0();
+
+  
+
     const Links = [
       {href: "/", name: "Home"},
       {href:"/audiences" , name: "Participant List"}
     
      ]
+
   
       const [presentations, setPresentations] = useState([])
       const {user_id} = props.match.params
@@ -18,10 +24,10 @@ function AudienceJoinPres(props) {
        useEffect(()  => {
         
         async function callApi() {
-          if(user_id === '' || user_id === null) {
-            return 
+          if(user.email === false) {
+            return false;
           }
-          const response = await fetch(`http://localhost:3333/join-presentation/${user_id}`);
+          const response = await fetch(`http://localhost:3333/join-presentation/${user.email}`);
           const data = await response.json();
           console.log("api data", data)
           setPresentations(data);
@@ -35,7 +41,9 @@ function AudienceJoinPres(props) {
       
         
         
-
+        if (loading) {
+          return <div>Loading...</div>;
+        }
         
           
           return (
