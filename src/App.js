@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import NavBar from "./components/NavBar";
-import Audience from "./components/audience"
+import React  from 'react';
+import LogInOut from "./components/LogInOut";
+import UserHome from "./components/UserHome";
+import Audience from "./components/audience";
 import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
@@ -22,13 +23,13 @@ function App(props) {
         {href: "/presenter", name: "Presenter"},
         {href: "/audiences" , name: "Audience"}
      ]
-     console.log("user",user.email)
+     
       
     return (
       <Router>
       <Route path="/" exact>
       <div className="container">
-      <NavBar/>
+      <LogInOut/>
 
       <h1>Green Light Red Light</h1>
     
@@ -43,6 +44,7 @@ function App(props) {
       <Route path= "/audiences" component={Audience}/>
       <Route path="/audience/join-presentation/:user_id?" component={AudienceJoinPres} />
       <Route path="/presenter" component={Presenter} />
+      <Route path="/user-home" component={UserHome} />
     </Router>
          
                      
