@@ -6,7 +6,7 @@ import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
 
-import AudienceJoinPres from './components/AudienceJoinPres'
+import AudienceJoinPres from './components/Participating'
 import Presenter from './components/presenter'
 
 import Nav from './components/nav'

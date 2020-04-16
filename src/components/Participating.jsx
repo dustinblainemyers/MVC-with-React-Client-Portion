@@ -4,7 +4,7 @@ import Nav from './nav'
 
 import "../App.css";
 
-function AudienceJoinPres(props) {
+function Participating(props) {
 
 
   const { loading, user } = useAuth0();
@@ -88,5 +88,5 @@ function AudienceJoinPres(props) {
     
     }
 
-export default AudienceJoinPres;
+export default Participating;
   
