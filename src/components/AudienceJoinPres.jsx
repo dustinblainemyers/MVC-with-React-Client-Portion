@@ -46,6 +46,10 @@ function AudienceJoinPres(props) {
            await fetch(`http://localhost:3333/join-presentation/lights/togglelight/${light_id}`, 
            {method: 'PUT'}
            );
+           const response = await fetch(`http://localhost:3333/join-presentation/${user.email}`);
+          const data = await response.json();
+          console.log("api data", data)
+          setPresentations(data);
            
           
            
