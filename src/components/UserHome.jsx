@@ -1,10 +1,16 @@
 import React, {useState, useEffect}from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
+import Nav from './nav'
+import { Link} from "react-router-dom"
 
 const UserHome = () => {
   const { user } = useAuth0();
   const [user_id, setUserID] = useState([])
+  const Links = [
+    {href: "/presenter", name: "All Hosting"},
+    {href: `/audiences/${user_id}` , name: "All Participating In"}
+ ]
   
   useEffect(()  => {
         
@@ -28,6 +34,12 @@ const UserHome = () => {
     <div>
     <LogInOut/>
      Welcome ! <span>user email : {user.email} </span><span>user id :  {user_id}</span>
+
+      <Link to={`/audiences/${user_id}`}>Participating</Link>
+     <h1>Green Light Red Light</h1>
+    
+      
+    <Nav link={Links}/>
 
     </div>
     

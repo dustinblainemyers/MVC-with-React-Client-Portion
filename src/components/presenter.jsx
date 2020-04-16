@@ -1,35 +1,44 @@
-import React, { Component } from 'react';
-
+import React, { useState,useEffect } from 'react';
+import { useAuth0 } from "../react-auth0-spa";
 import Nav from './nav'
 
 import "../App.css";
 
-class Presenter extends Component {
+function Presenter(props) {
   
-    state = {
+  const { loading, user } = useAuth0();
+  console.log("user",user);
+  const Links = [
+    {href: "/user-home", name: "Home"},
+    {href:"/audiences" , name: "Participant List"}
+  
+   ]
+
+   const [presentations, setPresentations] = useState([])
+
     
-        presentations: []
-      };
+   useEffect(()  => {
+        
+    async function callApi() {
+      if(user.email === false) {
+        return false;
+      }
+      const response = await fetch(`http://localhost:3333/create-presentation/${user.email}`);
+      const data = await response.json();
+      console.log("api data", data)
+      setPresentations(data);
+    }
+   
+    callApi();
     
-      async componentDidMount() {
-        
-        const response = await fetch(`http://localhost:3333/join-presentation/happypath/reallyhappy`);
-        const data = await response.json();
-         
-        this.setState({
-            presentations: data
-          });
+   
+  
+    }, [user.email])
       
-        }
-      
-        render() {
-          const {presentations} = this.state
-          const Links = [
-            {href: "/", name: "Home"},
-            {href:"/audiences" , name: "Participant List"}
-            
-         ]
         
+    if (loading) {
+      return <div>Loading...</div>;
+    }
 
         
           
@@ -37,26 +46,26 @@ class Presenter extends Component {
           
           <div className="contained">
           <Nav link={Links}/>
-          <h1>Introduction To The Hustle</h1>
+          <h1>Presentations You Are Hosting</h1>
           <hr></hr>
             {presentations.length > 0 ? (
               presentations.map(presentation =>  (
-                <p>
-                <span>{presentation.name} {presentation.green_light}</span>
-                <p className={presentation.green_light + ''}></p>
+                <>
+                <span>{presentation.lesson_name} </span>
+            
                 
-                </p>
+                </>
               ))
             ) : (
-               <p>No current presentations found.</p>
+               <p>You are not hosting any presentations currently.</p>
             )
           }
           </div>
                
                            
           )
-          
-        }
+        
+        
     
     }
 

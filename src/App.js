@@ -11,9 +11,9 @@ import Presenter from './components/presenter'
 
 import Nav from './components/nav'
 
-function App(props) {
+function App() {
   
-  const { loading, user } = useAuth0();
+  const { loading} = useAuth0();
 
   if (loading) {
     return <div>Loading...</div>;
@@ -21,7 +21,7 @@ function App(props) {
 
       const Links = [
         {href: "/presenter", name: "Presenter"},
-        {href: "/audiences" , name: "Audience"}
+        {href: "/audiences/:user_id?" , name: "Audience"}
      ]
      
       
@@ -31,18 +31,14 @@ function App(props) {
       <div className="container">
       <LogInOut/>
 
-      <h1>Green Light Red Light</h1>
-    
       
-      <Nav link={Links}/>
 
 
       </div>
         
         
       </Route>
-      <Route path= "/audiences" component={Audience}/>
-      <Route path="/audience/join-presentation/:user_id?" component={AudienceJoinPres} />
+      <Route path="/audiences/:user_id" component={AudienceJoinPres} />
       <Route path="/presenter" component={Presenter} />
       <Route path="/user-home" component={UserHome} />
     </Router>
