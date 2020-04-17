@@ -7,7 +7,7 @@ import "../App.css";
 function Participating(props) {
 
 
-  const { loading, user } = useAuth0();
+  const {  loading, user } = useAuth0();
   const {user_id} = props.match.params
   console.log("route params",props)
   console.log("user_id",user_id)
@@ -18,7 +18,7 @@ function Participating(props) {
     
     const Links = [
       {href: "/user-home", name: "Home"},
-      {href:`/audiences/${user_id}` , name: "Participant List"}
+      
     
      ]
 
@@ -66,16 +66,15 @@ function Participating(props) {
            
       } 
         
-        if (loading) {
-          return <div>Loading...</div>;
-        }
         
+          const notFound = "You are not an audience member of any presentations.";
           
           return (
           
           <div className="contained">
-          <Nav link={Links}/>
+          
           <h1>Your Presentations</h1>
+          <Nav link={Links}/>
           <hr></hr>
             {presentations.length > 0 ? (
               presentations.map( (presentation,i) =>  (
@@ -86,7 +85,7 @@ function Participating(props) {
                 </>
               ))
             ) : (
-              <p>You are not an audience member of any presentations.</p>
+              <p>{ notFound}</p>
             )
           }
           </div>

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-
 import Aggregate from './Aggregate';
 import "../App.css";
 
-import LogInOut from "./LogInOut";
-import Nav from './nav'
 
 class AggPage extends Component {
   
@@ -17,7 +14,7 @@ class AggPage extends Component {
           
           return (
           <>
-            <Aggregate test={this.props.match.params.presentation_id} key={this.props.match.params.presentation_id}/>
+            <Aggregate test={this.props.match.params.presentation_id} name={this.props.match.params.presentation_name}  key={this.props.match.params.presentation_id}/>
             
           </>
                

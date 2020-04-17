@@ -9,6 +9,7 @@ import "./App.css";
 import Participating from './components/Participating'
 import AllHosting from './components/AllHosting'
 import AggPage from './components/AggPage'
+import JoinPresentation from './components/JoinPresentation';
 
 
 
@@ -17,7 +18,7 @@ function App() {
   const { loading} = useAuth0();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <></>;
   }
 
       const Links = [
@@ -42,7 +43,9 @@ function App() {
       <Route path="/audiences/:user_id" component={Participating} />
       <Route path="/all-hosting" component={AllHosting} />
       <Route path="/user-home" component={UserHome} />
-      <Route path="/agg-page/:presentation_id" component={AggPage} />
+      <Route path="/join-presentation" component={JoinPresentation} />
+      <Route path="/agg-page/:presentation_id/:presentation_name" component={AggPage} />
+      
       
 
     </Router>

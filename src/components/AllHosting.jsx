@@ -12,12 +12,12 @@ function AllHosting(props) {
   console.log("user",user);
   const Links = [
     {href: "/user-home", name: "Home"},
-    {href:"/audiences" , name: "Participant List"}
+   
   
    ]
 
    const [presentations, setPresentations] = useState([])
-
+  
     
    useEffect(()  => {
         
@@ -36,6 +36,8 @@ function AllHosting(props) {
    
   
     }, [user.email])
+
+    
       
         
     if (loading) {
@@ -47,15 +49,16 @@ function AllHosting(props) {
           return (
           
           <div className="contained">
-          <Nav link={Links}/>
+          
           <h1>Presentations You Are Hosting</h1>
+          <Nav link={Links}/>
           <hr></hr>
             {presentations.length > 0 ? (
               presentations.map(presentation =>  (
                 <>
                 <p>
                     
-                <Link to={`agg-page/${presentation.id}`}>Lesson Name :{presentation.lesson_name}</Link>
+                <Link to={`agg-page/${presentation.id}/${presentation.lesson_name}`}>Lesson Name :{presentation.lesson_name}</Link>
                  
                 </p>
             
