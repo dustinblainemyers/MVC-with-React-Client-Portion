@@ -1,7 +1,7 @@
 import React  from 'react';
 import LogInOut from "./components/LogInOut";
 import UserHome from "./components/UserHome";
-import Audience from "./components/audience";
+import SocketTest from "./components/SocketTest";
 import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
@@ -41,6 +41,8 @@ function App() {
       <Route path="/audiences/:user_id" component={AudienceJoinPres} />
       <Route path="/presenter" component={Presenter} />
       <Route path="/user-home" component={UserHome} />
+      <Route path="/socket-test" component={SocketTest} />
+
     </Router>
          
                      
