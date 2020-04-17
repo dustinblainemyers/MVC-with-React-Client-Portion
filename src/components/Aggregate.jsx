@@ -8,13 +8,13 @@ class Aggregate extends Component {
       response: false,
       
       aggregateLight: "",
-      test: 8,
+      
     };
   }
 
   componentDidMount() {
     const { endpoint } = this.state;
-    const socket = socketIOClient(`127.0.0.1:4001?token=${this.state.test}`);
+    const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
     socket.on("FromAPI", data => this.setState({ response: data }));
     
   }
@@ -24,6 +24,7 @@ class Aggregate extends Component {
     return (
         <>
         <p>aggregateLight:  {response} </p>
+        
         </>
              
                          

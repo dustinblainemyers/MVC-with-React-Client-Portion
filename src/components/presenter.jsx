@@ -3,6 +3,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import Nav from './nav'
 
 import "../App.css";
+import Aggregate from './Aggregate';
 
 function Presenter(props) {
   
@@ -51,7 +52,11 @@ function Presenter(props) {
             {presentations.length > 0 ? (
               presentations.map(presentation =>  (
                 <>
-                <span>{presentation.lesson_name} </span>
+                <p>
+                    <Aggregate test={presentation.id} key={presentation.id}/>
+                    {presentation.id}
+                 
+                </p>
             
                 
                 </>

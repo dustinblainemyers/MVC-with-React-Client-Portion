@@ -41,7 +41,7 @@ function App() {
       <Route path="/audiences/:user_id" component={AudienceJoinPres} />
       <Route path="/presenter" component={Presenter} />
       <Route path="/user-home" component={UserHome} />
-      <Route path="/socket-test" component={Aggregate} />
+      
 
     </Router>
          
