@@ -8,7 +8,7 @@ class Aggregate extends Component {
       response: false,
       
       aggregateLight: "",
-      
+      Green: true,
     };
   }
 
@@ -21,9 +21,13 @@ class Aggregate extends Component {
 
   render() {
     const { response } = this.state;
+    if(response === 'Red') {
+      this.setState({Green: false})
+    }
     return (
         <>
         <p>aggregateLight:  {response} </p>
+        <p className={this.state.Green + ''}></p>
         
         </>
              

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { useAuth0 } from "../react-auth0-spa";
 import Nav from './nav'
 
@@ -13,6 +13,9 @@ function Participating(props) {
   console.log("user_id",user_id)
     
     console.log("user",user);
+    
+
+    
     const Links = [
       {href: "/user-home", name: "Home"},
       {href:`/audiences/${user_id}` , name: "Participant List"}
@@ -21,7 +24,7 @@ function Participating(props) {
 
   
       const [presentations, setPresentations] = useState([])
-      const [rerender, setRerender] = useState('')
+      
       
       console.log("user email", )
        useEffect(()  => {
@@ -42,15 +45,21 @@ function Participating(props) {
       
         }, [user.email])
       
-      const  toggleLight = async (light_id) => {
+      const  toggleLight = async (light_id , i, green_light) => {
            console.log(`${light_id}light has been toggled`)
+           green_light = !green_light
+           console.log("present",presentations)
            await fetch(`http://localhost:3333/join-presentation/lights/togglelight/${light_id}`, 
            {method: 'PUT'}
            );
            const response = await fetch(`http://localhost:3333/join-presentation/${user.email}`);
           const data = await response.json();
-          console.log("api data", data)
-          setPresentations(data)
+          
+          let spread;
+          setPresentations(data);
+          
+          // setPresentations([...presentations.splice(i,1,{'green_light':green_light})])
+          
            
           
            
@@ -69,10 +78,10 @@ function Participating(props) {
           <h1>Your Presentations</h1>
           <hr></hr>
             {presentations.length > 0 ? (
-              presentations.map( presentation =>  (
+              presentations.map( (presentation,i) =>  (
                 <>
-                <span>{presentation.lesson_name} {presentation.green_light}</span>
-                <p className={presentation.green_light + ''} onClick={() => toggleLight(presentation.id)} key={1}></p>
+                <span key={presentation.id}>{presentation.lesson_name} {presentation.green_light} </span>
+                <p className={presentation.green_light + ''} onClick={() => toggleLight(presentation.id,i,presentation.green_light)} key={presentation.lesson_name}></p>
                 
                 </>
               ))
