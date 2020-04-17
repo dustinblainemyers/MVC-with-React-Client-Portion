@@ -21,6 +21,7 @@ function Participating(props) {
 
   
       const [presentations, setPresentations] = useState([])
+      const [rerender, setRerender] = useState('')
       
       console.log("user email", )
        useEffect(()  => {
@@ -49,7 +50,7 @@ function Participating(props) {
            const response = await fetch(`http://localhost:3333/join-presentation/${user.email}`);
           const data = await response.json();
           console.log("api data", data)
-          setPresentations(data);
+          setPresentations(data)
            
           
            
@@ -68,10 +69,10 @@ function Participating(props) {
           <h1>Your Presentations</h1>
           <hr></hr>
             {presentations.length > 0 ? (
-              presentations.map(presentation =>  (
+              presentations.map( presentation =>  (
                 <>
                 <span>{presentation.lesson_name} {presentation.green_light}</span>
-                <p className={presentation.green_light + ''} onClick={() => toggleLight(presentation.id)} key={presentation.lesson_name}></p>
+                <p className={presentation.green_light + ''} onClick={() => toggleLight(presentation.id)} key={1}></p>
                 
                 </>
               ))

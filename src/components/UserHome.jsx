@@ -8,7 +8,7 @@ const UserHome = () => {
   const { user } = useAuth0();
   const [user_id, setUserID] = useState([])
   const Links = [
-    {href: "/presenter", name: "All Hosting"},
+    {href: "/all-hosting", name: "All Hosting"},
     {href: `/audiences/${user_id}` , name: "All Participating In"}
  ]
   
@@ -32,11 +32,13 @@ const UserHome = () => {
 
   return (
     <div>
-    <LogInOut/>
-     Welcome ! <span>user email : {user.email} </span><span>user id :  {user_id}</span>
+    
+     
 
-      <Link to={`/audiences/${user_id}`}>Participating</Link>
+     
      <h1>Green Light Red Light</h1>
+     <p>Logged in as :{user.email}</p>
+     <center><LogInOut/></center>
     
       
     <Nav link={Links}/>

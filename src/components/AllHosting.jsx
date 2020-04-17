@@ -1,11 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import { useAuth0 } from "../react-auth0-spa";
+import { Link } from 'react-router-dom';
 import Nav from './nav'
 
 import "../App.css";
-import Aggregate from './Aggregate';
 
-function Presenter(props) {
+
+function AllHosting(props) {
   
   const { loading, user } = useAuth0();
   console.log("user",user);
@@ -53,8 +54,8 @@ function Presenter(props) {
               presentations.map(presentation =>  (
                 <>
                 <p>
-                    <Aggregate test={presentation.id} key={presentation.id}/>
-                    {presentation.id}
+                    
+                <Link to={`agg-page/${presentation.id}`}>Lesson Name :{presentation.lesson_name}</Link>
                  
                 </p>
             
@@ -74,4 +75,4 @@ function Presenter(props) {
     
     }
 
-export default Presenter;
+export default AllHosting;

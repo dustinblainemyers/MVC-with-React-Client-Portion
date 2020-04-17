@@ -1,15 +1,16 @@
 import React  from 'react';
 import LogInOut from "./components/LogInOut";
 import UserHome from "./components/UserHome";
-import Aggregate from "./components/Aggregate";
+
 import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
 
-import AudienceJoinPres from './components/Participating'
-import Presenter from './components/presenter'
+import Participating from './components/Participating'
+import AllHosting from './components/AllHosting'
+import AggPage from './components/AggPage'
 
-import Nav from './components/nav'
+
 
 function App() {
   
@@ -38,9 +39,10 @@ function App() {
         
         
       </Route>
-      <Route path="/audiences/:user_id" component={AudienceJoinPres} />
-      <Route path="/presenter" component={Presenter} />
+      <Route path="/audiences/:user_id" component={Participating} />
+      <Route path="/all-hosting" component={AllHosting} />
       <Route path="/user-home" component={UserHome} />
+      <Route path="/agg-page/:presentation_id" component={AggPage} />
       
 
     </Router>
