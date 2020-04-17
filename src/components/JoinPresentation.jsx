@@ -13,7 +13,7 @@ import "../App.css";
       
         async componentDidMount() {
           
-          const response = await fetch(`http://localhost:3333/join-presentation/test@test.com`);
+          const response = await fetch(`http://localhost:3333/misc-endpoints/${this.props.match.params.user_id}`);
           const data = await response.json();
            
           this.setState({
@@ -37,13 +37,13 @@ import "../App.css";
             
             <div className="contained">
             <Nav link={Links}/>
-            <h1>Your Presentations</h1>
+            <h1>Join a presentation</h1>
             <hr></hr>
               {presentations.length > 0 ? (
                 presentations.map(presentation =>  (
                   <p>
-                  <span>{presentation.lesson_name} {presentation.green_light}</span>
-                  <p className={presentation.green_light + ''}></p>
+                  <button>{presentation.lesson_name} </button>
+                  
                   
                   </p>
                 ))

@@ -30,9 +30,10 @@ function App() {
     return (
       <Router>
       <Route path="/" exact>
+      
       <div className="container">
-      <LogInOut/>
-
+      <div className="login"><LogInOut/></div>
+      
       
 
 
@@ -43,7 +44,7 @@ function App() {
       <Route path="/audiences/:user_id" component={Participating} />
       <Route path="/all-hosting" component={AllHosting} />
       <Route path="/user-home" component={UserHome} />
-      <Route path="/join-presentation" component={JoinPresentation} />
+      <Route path="/join-presentation/:user_id" component={JoinPresentation} />
       <Route path="/agg-page/:presentation_id/:presentation_name" component={AggPage} />
       
       
