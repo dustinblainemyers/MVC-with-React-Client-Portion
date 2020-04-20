@@ -1,6 +1,7 @@
 import React  from 'react';
 import LogInOut from "./components/LogInOut";
 import UserHome from "./components/UserHome";
+import traffic from "./traffic.jpg";
 
 import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -26,13 +27,20 @@ function App() {
         {href: "/audiences/:user_id?" , name: "Audience"}
      ]
      
-      
+      const backgroundImage = '/public/traffic-lights-514932_640.jpg';
     return (
       <Router>
       <Route path="/" exact>
-      
-      <div className="container">
-      <div className="login"><LogInOut/></div>
+      <h1>Green Light Red Light</h1>
+      <div className="container ">
+      <div className="login "><LogInOut/></div>
+
+       <div className="background" styles={{ backgroundImage:`url(${traffic})` }}></div>
+       {/* .background {
+        height:300px;
+        width:300px;
+        background-image: url("/public/traffic-lights-514932_640.jpg"); */}
+
       
       
 
