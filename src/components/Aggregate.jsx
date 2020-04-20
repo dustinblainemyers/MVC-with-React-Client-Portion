@@ -6,20 +6,36 @@ class Aggregate extends Component {
   constructor() {
     super();
     this.state = {
-      response: false,
+      response: '',
       
       aggregateLight: "",
       Green: true,
     };
   }
 
-  componentDidMount() {
-    const { endpoint } = this.state;
-    const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
-    socket.on("FromAPI", data => this.setState({ response: data }));
-    
+
+  updateLight = data  => {
+    this.setState(prevState => ({
+      response: [...prevState.response, data],
+      
+     }))
   }
 
+  componentDidMount() { 
+    const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
+
+    socket.on("FromAPI", this.updateLight)
+   }
+    
+
+   componentWillUnmount() {
+    const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
+    socket.off('FromAPI', this.updateLight);
+ }  
+
+
+    
+    
   render() {
     const { response } = this.state;
     const Links = [
@@ -47,6 +63,6 @@ class Aggregate extends Component {
                          
         )
   }
-}
 
+}
 export default Aggregate;
