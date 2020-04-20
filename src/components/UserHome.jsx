@@ -10,8 +10,8 @@ const UserHome = () => {
   const Links = [
     {href: "/all-hosting", name: "All Hosting"},
     {href: `/audiences/${user_id}` , name: "All Participating In"},
-    {href: `/create-presentation/${user_id}` , name: "Create Presentation"},
-    {href: `/join-presentation/${user_id}` , name: "Join Presentation"},
+    // {href: `/create-presentation/${user_id}` , name: "Create Presentation"},
+    // {href: `/join-presentation/${user_id}` , name: "Join Presentation"},
 
  ]
   
