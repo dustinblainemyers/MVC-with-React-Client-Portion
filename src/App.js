@@ -1,7 +1,7 @@
 import React  from 'react';
 import LogInOut from "./components/LogInOut";
 import UserHome from "./components/UserHome";
-import traffic from "./traffic.jpg";
+
 
 import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -35,7 +35,7 @@ function App() {
       <div className="container ">
       <div className="login "><LogInOut/></div>
 
-       <div className="background" styles={{ backgroundImage:`url(${traffic})` }}></div>
+    
        {/* .background {
         height:300px;
         width:300px;
