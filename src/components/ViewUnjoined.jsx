@@ -8,7 +8,7 @@ class ViewUnjoined extends Component {
   };
 
   async componentDidMount() {
-    console.log("viewunjoined props", this.props);
+    
     try {
       const response = await fetch(
         `http://localhost:3333/misc-endpoints/${this.props.user_id}`

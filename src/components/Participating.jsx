@@ -8,7 +8,7 @@ function Participating(props) {
 
   const [presentations, setPresentations] = useState([]);
 
-  console.log("user email");
+
   useEffect(() => {
     async function callApi() {
       if (user.email === false) {
