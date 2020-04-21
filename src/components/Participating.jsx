@@ -8,9 +8,9 @@ function Participating(props) {
 
 
   const {  loading, user } = useAuth0();
-  const {user_id} = props.user_id
   
-    
+  console.log("participating userid",props.user_id)
+
 
     
     const Links = [
@@ -34,6 +34,7 @@ function Participating(props) {
           const data = await response.json();
           console.log("api data", data)
           setPresentations(data);
+       
         }
        
         callApi();

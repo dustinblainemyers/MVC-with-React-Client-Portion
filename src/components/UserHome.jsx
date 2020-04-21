@@ -28,6 +28,7 @@ const UserHome = () => {
       const data = await response.json();
       console.log("api data", data)
       setUserID(data.id);
+      console.log("user id after api call", user_id)
     }
    
     callApi();
