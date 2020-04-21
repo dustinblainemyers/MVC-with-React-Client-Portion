@@ -33,7 +33,7 @@ function ViewUnjoined(props) {
     }
 
     callApi();
-  }, [props.user_id]);
+  }, [this.props.user_id]);
 
   
 

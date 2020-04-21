@@ -22,7 +22,7 @@ const UserHome = () => {
     const data = await response.json();
    
     // setUserID(data.id);} 
-    setUserID(8)}
+    setUserID(1)}
     
     catch {
       console.log("there was an error with an api call in UserHome ")
