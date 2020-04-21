@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import socketIOClient from "socket.io-client";
-import Nav from './nav'
+// import socketIOClient from "socket.io-client";
+
 
 class Aggregate extends Component {
   constructor() {
@@ -38,13 +38,8 @@ class Aggregate extends Component {
     
   render() {
     const { response } = this.state;
-    const Links = [
-      
-      {href: "/user-home", name: "Home"},
-      {href: "/all-hosting", name: "All Hosting"}
-      
-    
-     ]
+   
+  
 
     if(response === 'Red') {
       this.setState({Green: false})

@@ -1,21 +1,15 @@
 import React, { useState,useEffect } from 'react';
 import { useAuth0 } from "../react-auth0-spa";
-import { Link } from 'react-router-dom';
-import Nav from './nav'
 import AggPage from "./AggPage"
 
 import "../App.css";
 
 
-function AllHosting(props) {
+function AllHosting() {
   
   const { loading, user } = useAuth0();
-  console.log("user",user);
-  const Links = [
-    {href: "/user-home", name: "Home"},
-   
   
-   ]
+ 
 
    const [presentations, setPresentations] = useState([])
   
@@ -26,10 +20,13 @@ function AllHosting(props) {
       if(user.email === false) {
         return false;
       }
-      const response = await fetch(`http://localhost:3333/create-presentation/${user.email}`);
+      try {const response = await fetch(`http://localhost:3333/create-presentation/${user.email}`);
       const data = await response.json();
       console.log("api data", data)
-      setPresentations(data);
+      setPresentations(data);}
+      catch {
+        console.log("There was an error in AllHosting ")
+      }
     }
    
     callApi();

@@ -1,23 +1,19 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth0 } from "../react-auth0-spa";
-import Nav from './nav'
+
 
 import "../App.css";
 
 function Participating(props) {
 
 
-  const {  loading, user } = useAuth0();
+  const {   user } = useAuth0();
   
   console.log("participating userid",props.user_id)
 
 
     
-    const Links = [
-      {href: "/user-home", name: "Home"},
-      
-    
-     ]
+   
 
   
       const [presentations, setPresentations] = useState([])
@@ -30,10 +26,14 @@ function Participating(props) {
           if(user.email === false) {
             return false;
           }
+          try {
           const response = await fetch(`http://localhost:3333/join-presentation/${user.email}`);
           const data = await response.json();
           console.log("api data", data)
-          setPresentations(data);
+          setPresentations(data);}
+          catch {
+            console.log("there was an error in the participating component api call")
+          }
        
         }
        

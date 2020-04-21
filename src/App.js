@@ -7,10 +7,6 @@ import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "./App.css";
 
-import Participating from './components/Participating'
-import AllHosting from './components/AllHosting'
-import AggPage from './components/AggPage'
-import JoinPresentation from './components/ViewUnjoined';
 
 
 
@@ -22,12 +18,9 @@ function App() {
     return <></>;
   }
 
-      const Links = [
-        {href: "/presenter", name: "Presenter"},
-        {href: "/audiences/:user_id?" , name: "Audience"}
-     ]
+    
      
-      const backgroundImage = '/public/traffic-lights-514932_640.jpg';
+      
     return (
       <Router>
       <Route path="/" exact>
