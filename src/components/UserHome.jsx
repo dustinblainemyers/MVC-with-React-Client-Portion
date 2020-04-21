@@ -3,6 +3,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
 import Nav from './nav'
 import AllHosting from "./AllHosting"
+import Participating from "./Participating";
 
 
 
@@ -47,6 +48,7 @@ const UserHome = () => {
      <p>Logged in as :{user.email}</p>
      <center><LogInOut/></center>
      <AllHosting/>
+     <Participating user_id={user_id}/>
      
     
       

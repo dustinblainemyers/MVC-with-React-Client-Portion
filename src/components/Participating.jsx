@@ -8,7 +8,7 @@ function Participating(props) {
 
 
   const {  loading, user } = useAuth0();
-  const {user_id} = props.match.params
+  const {user_id} = props.user_id
   console.log("route params",props)
   console.log("user_id",user_id)
     
@@ -74,7 +74,7 @@ function Participating(props) {
           <div className="contained">
           
           <h1>Your Presentations</h1>
-          <Nav link={Links}/>
+          
           <hr></hr>
             {presentations.length > 0 ? (
               presentations.map( (presentation,i) =>  (
