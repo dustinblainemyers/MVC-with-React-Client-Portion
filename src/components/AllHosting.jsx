@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useAuth0 } from "../react-auth0-spa";
 import { Link } from 'react-router-dom';
 import Nav from './nav'
+import AggPage from "./AggPage"
 
 import "../App.css";
 
@@ -50,15 +51,16 @@ function AllHosting(props) {
           
           <div className="contained">
           
-          <h1>Presentations You Are Hosting</h1>
-          <Nav link={Links}/>
+          <h2>Presentations You Are Hosting</h2>
+          
           <hr></hr>
             {presentations.length > 0 ? (
               presentations.map(presentation =>  (
                 <>
                 <p>
                     
-                <Link to={`agg-page/${presentation.id}/${presentation.lesson_name}`}>Lesson Name :{presentation.lesson_name}</Link>
+                <AggPage presentation_id ={presentation.id} lesson_name={presentation.lesson_name}  />
+                
                  
                 </p>
             

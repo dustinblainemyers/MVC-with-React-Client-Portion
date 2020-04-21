@@ -2,6 +2,8 @@ import React, {useState, useEffect}from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
 import Nav from './nav'
+import AllHosting from "./AllHosting"
+
 
 
 const UserHome = () => {
@@ -40,10 +42,12 @@ const UserHome = () => {
 
      
      <h1>Green Light Red Light</h1>
-     <Nav link={Links}/>
+     
      <hr></hr>
      <p>Logged in as :{user.email}</p>
      <center><LogInOut/></center>
+     <AllHosting/>
+     
     
       
     

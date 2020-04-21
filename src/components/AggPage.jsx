@@ -14,7 +14,7 @@ class AggPage extends Component {
           
           return (
           <>
-            <Aggregate test={this.props.match.params.presentation_id} name={this.props.match.params.presentation_name}  key={this.props.match.params.presentation_id}/>
+            <Aggregate test={this.props.presentation_id} lesson_name={this.props.lesson_name}  key={this.props.presentation_id}/>
             
           </>
                

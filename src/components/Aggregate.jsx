@@ -52,8 +52,8 @@ class Aggregate extends Component {
     return (
         <>
         
-        <h1>{this.props.name}  </h1>
-        <Nav link={Links}/>
+        <h1>{this.props.lesson_name} hello  </h1>
+        
         <p></p>
         
         <p className={this.state.Green + ''}></p>

@@ -35,11 +35,6 @@ function App() {
       <div className="container ">
       <div className="login "><LogInOut/></div>
 
-    
-       {/* .background {
-        height:300px;
-        width:300px;
-        background-image: url("/public/traffic-lights-514932_640.jpg"); */}
 
       
       
@@ -49,11 +44,9 @@ function App() {
         
         
       </Route>
-      <Route path="/audiences/:user_id" component={Participating} />
-      <Route path="/all-hosting" component={AllHosting} />
+      
       <Route path="/user-home" component={UserHome} />
-      <Route path="/join-presentation/:user_id" component={JoinPresentation} />
-      <Route path="/agg-page/:presentation_id/:presentation_name" component={AggPage} />
+   
       
       
 
