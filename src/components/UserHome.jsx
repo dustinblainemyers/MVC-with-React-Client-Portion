@@ -48,8 +48,8 @@ const UserHome = () => {
      <p>Logged in as :{user.email}</p>
      <center><LogInOut/></center>
      <AllHosting/>
-     {/* <Participating user_id={user_id}/> */}
-     {/* <ViewUnjoined user_id={user_id}/> */}
+     <Participating user_id={user_id}/>
+     <ViewUnjoined user_id={user_id}/>
      
     
       
