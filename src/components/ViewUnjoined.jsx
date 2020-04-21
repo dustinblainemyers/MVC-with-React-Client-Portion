@@ -5,6 +5,10 @@ import Nav from './nav'
 import "../App.css";
   
   class ViewUnjoined extends Component {
+
+    constructor(props) {
+      super(props);
+    }
     
       state = {
       
@@ -12,7 +16,7 @@ import "../App.css";
         };
       
         async componentDidMount() {
-          console.log("viewunjoined user_id", this.props.user_id)
+          console.log("viewunjoined props", this.props)
           const response = await fetch(`http://localhost:3333/misc-endpoints/${this.props.user_id}`);
           // api call returns a list of presentations the user is not a part of.
           // select distinct test_lesson.lesson_name 
