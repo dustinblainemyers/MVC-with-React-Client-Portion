@@ -6,17 +6,24 @@ const LogInOut = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
-  
-    <div className="middle">
+    <div className='middle'>
       {!isAuthenticated && (
-        <div><button className="button solid hello" onClick={() => loginWithRedirect({})}>Log in / Sign up</button></div>
-        
-        
+        <div>
+          <button
+            className='button solid hello'
+            onClick={() => loginWithRedirect({})}
+          >
+            Log in / Sign up
+          </button>
+        </div>
       )}
 
-      {isAuthenticated &&  <button className="button solid" onClick={() => logout()}>Log out</button>}
+      {isAuthenticated && (
+        <button className='button solid' onClick={() => logout()}>
+          Log out
+        </button>
+      )}
     </div>
-  
   );
 };
 
