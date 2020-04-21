@@ -14,24 +14,24 @@ class Aggregate extends Component {
   }
 
 
-  updateLight = data  => {
-    this.setState(prevState => ({
-      response: [...prevState.response, data],
+//   updateLight = data  => {
+//     this.setState(prevState => ({
+//       response: [...prevState.response, data],
       
-     }))
-  }
+//      }))
+//   }
 
-  componentDidMount() { 
-    const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
+//   componentDidMount() { 
+//     const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
 
-    socket.on("FromAPI", this.updateLight)
-   }
+//     socket.on("FromAPI", this.updateLight)
+//    }
     
 
-   componentWillUnmount() {
-    const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
-    socket.off('FromAPI', this.updateLight);
- }  
+//    componentWillUnmount() {
+//     const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
+//     socket.off('FromAPI', this.updateLight);
+//  }  
 
 
     
