@@ -10,7 +10,7 @@ import "./App.css";
 import Participating from './components/Participating'
 import AllHosting from './components/AllHosting'
 import AggPage from './components/AggPage'
-import JoinPresentation from './components/JoinPresentation';
+import JoinPresentation from './components/ViewUnjoined';
 
 
 

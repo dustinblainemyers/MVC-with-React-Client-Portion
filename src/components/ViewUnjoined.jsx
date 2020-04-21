@@ -4,7 +4,7 @@ import Nav from './nav'
 
 import "../App.css";
   
-  class JoinPresentation extends Component {
+  class ViewUnjoined extends Component {
     
       state = {
       
@@ -12,18 +12,23 @@ import "../App.css";
         };
       
         async componentDidMount() {
-          
-          const response = await fetch(`http://localhost:3333/misc-endpoints/${this.props.match.params.user_id}`);
+          console.log("viewunjoined user_id", this.props.user_id)
+          const response = await fetch(`http://localhost:3333/misc-endpoints/${this.props.user_id}`);
+          // api call returns a list of presentations the user is not a part of.
+          // select distinct test_lesson.lesson_name 
+          // from test_lesson   inner join  lights on test_lesson.id = lights.lesson_id
+          // inner join users on lights.users_id = users.id WHERE users.id != ${users_id}`
           const data = await response.json();
            
           this.setState({
-              presentations: data
+              presentations: [...this.state.presentations, data],
             });
         
           }
         
           render() {
             const {presentations} = this.state
+            console.log("presentations in view unjoined", typeof(presentations))
             const Links = [
               {href: "/", name: "Home"},
               {href:"/audiences" , name: "Participant List"}
@@ -36,7 +41,7 @@ import "../App.css";
             return (
             
             <div className="contained">
-            <Nav link={Links}/>
+            
             <h1>Join a presentation</h1>
             <hr></hr>
               {presentations.length > 0 ? (
@@ -60,4 +65,4 @@ import "../App.css";
       
       }
   
-  export default JoinPresentation;
+  export default ViewUnjoined;

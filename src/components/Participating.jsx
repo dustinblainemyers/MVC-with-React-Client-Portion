@@ -9,10 +9,7 @@ function Participating(props) {
 
   const {  loading, user } = useAuth0();
   const {user_id} = props.user_id
-  console.log("route params",props)
-  console.log("user_id",user_id)
-    
-    console.log("user",user);
+  
     
 
     

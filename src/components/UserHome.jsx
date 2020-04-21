@@ -4,7 +4,7 @@ import LogInOut from "./LogInOut";
 import Nav from './nav'
 import AllHosting from "./AllHosting"
 import Participating from "./Participating";
-
+import ViewUnjoined from "./ViewUnjoined"
 
 
 const UserHome = () => {
@@ -49,6 +49,7 @@ const UserHome = () => {
      <center><LogInOut/></center>
      <AllHosting/>
      <Participating user_id={user_id}/>
+     <ViewUnjoined user_id={user_id}/>
      
     
       
