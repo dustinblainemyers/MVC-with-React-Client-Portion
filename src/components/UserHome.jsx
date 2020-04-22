@@ -32,18 +32,16 @@ const UserHome = () => {
 
   return (
     <>
-      <Row>
-        <nav>
-          <div class='nav-wrapper'>
-            <a href='#' class='brand-logo'>
-              LightBoard
-              <h1>Green Light Red Light</h1>
-              Logged in as :{user.email}
-            </a>
-            <ul id='nav-mobile' class='right hide-on-med-and-down'></ul>
-          </div>
-        </nav>
-      </Row>
+      <nav>
+        <div class='nav-wrapper'>
+          <a href='#' class='brand-logo'>
+            LightBoard
+            <h1>Green Light Red Light</h1>
+            Logged in as :{user.email}
+          </a>
+          <ul id='nav-mobile' class='right hide-on-med-and-down'></ul>
+        </div>
+      </nav>
       <Row>
         <Col>
           <Card>
