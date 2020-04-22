@@ -40,14 +40,15 @@ function AllHosting() {
       <hr></hr>
       {presentations.length > 0 ? (
         presentations.map((presentation) => (
-          <>
-            <p>
+          
+            <>
               <AggPage
                 presentation_id={presentation.id}
                 lesson_name={presentation.lesson_name}
+                key={presentation.id}
               />
-            </p>
-          </>
+            </>
+          
         ))
       ) : (
         <p>You are not hosting any presentations currently.</p>

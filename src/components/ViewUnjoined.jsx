@@ -7,33 +7,43 @@ function ViewUnjoined(props) {
   const { user } = useAuth0();
 
   const [presentations, setPresentations] = useState([]);
-
-
+  const {user_id} = props.user_id;
+  console.log("outside use effect", props.user_id)
   useEffect(() => {
+    console.log("inside use effect", props.user_id)
     async function callApi() {
+      console.log("inside call api", props.user_id)
       if (user.email === false) {
         return false;
       }
-      try {
-        const response = await fetch(
-          `http://localhost:3333/misc-endpoints/${this.props.user_id}`
-        );
-        // api call returns a list of presentations the user is not a part of.
-      // select distinct test_lesson.lesson_name
-      // from test_lesson   inner join  lights on test_lesson.id = lights.lesson_id
-      // inner join users on lights.users_id = users.id WHERE users.id != ${users_id}`
-        const data = await response.json();
+
+      if (props.user_id) {
+
+        try {
         
-        setPresentations(data);
-      } catch {
-        console.log(
-          "there was an error in the viewunjoined api call"
-        );
+          const response = await fetch(
+            
+            `http://localhost:3333/misc-endpoints/${props.user_id}`
+          );
+          // api call returns a list of presentations the user is not a part of.
+        // select distinct test_lesson.lesson_name
+        // from test_lesson   inner join  lights on test_lesson.id = lights.lesson_id
+        // inner join users on lights.users_id = users.id WHERE users.id != ${users_id}`
+          const data = await response.json();
+          console.log(data)
+           setPresentations([...presentations, data]);
+          console.log("presentations after api state", presentations)
+         } catch {
+           console.log(
+             "we had issues in the viewunjoined api call"
+           );
+         }
       }
+       
     }
 
     callApi();
-  }, [props.user_id]);
+  },[props.user_id]);
 
   
 

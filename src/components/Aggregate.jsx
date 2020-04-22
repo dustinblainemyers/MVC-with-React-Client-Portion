@@ -40,7 +40,7 @@ class Aggregate extends Component {
       <>
         <h1>{this.props.lesson_name} hello </h1>
 
-        <p></p>
+        
 
         <p className={this.state.Green + ""}></p>
       </>

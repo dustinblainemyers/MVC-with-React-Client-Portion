@@ -21,8 +21,8 @@ const UserHome = () => {
     const response = await fetch(`http://localhost:3333/users/${user.email}`);
     const data = await response.json();
    
-    // setUserID(data.id);} 
-    setUserID(1)}
+    setUserID(data.id);} 
+    // setUserID(1)}
     
     catch {
       console.log("there was an error with an api call in UserHome ")
@@ -53,7 +53,7 @@ const UserHome = () => {
      <center><LogInOut/></center>
      <AllHosting/>
      <Participating user_id={user_id}/>
-     <ViewUnjoined user_id={user_id}/>
+     <ViewUnjoined user_id="8" />
      
     
       
