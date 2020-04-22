@@ -4,6 +4,7 @@ import LogInOut from "./LogInOut";
 import AllHosting from "./AllHosting";
 import Participating from "./Participating";
 import ViewUnjoined from "./ViewUnjoined";
+import DummyComponent from "./DummyComponent";
 import { Row, Col, Card } from "react-materialize";
 
 const UserHome = () => {
@@ -32,16 +33,18 @@ const UserHome = () => {
 
   return (
     <>
-      <nav>
-        <div class='nav-wrapper'>
-          <a href='#' class='brand-logo'>
-            LightBoard
-            <h1>Green Light Red Light</h1>
-            Logged in as :{user.email}
-          </a>
-          <ul id='nav-mobile' class='right hide-on-med-and-down'></ul>
-        </div>
-      </nav>
+      <Row>
+        <nav>
+          <div class='nav-extended'>
+            <a href='#' class='brand-logo'>
+              LightBoard
+              <h1>Green Light Red Light</h1>
+              Logged in as :{user.email}
+            </a>
+            <ul id='nav-mobile' class='right hide-on-med-and-down'></ul>
+          </div>
+        </nav>
+      </Row>
       <Row>
         <Col>
           <Card>
@@ -49,6 +52,9 @@ const UserHome = () => {
           </Card>
           <Participating user_id={user_id} />
           <ViewUnjoined user_id='8' />
+        </Col>
+        <Col>
+          <DummyComponent />
         </Col>
       </Row>
     </>
