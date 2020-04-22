@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "../react-auth0-spa";
+
 
 import "../App.css";
 
 function ViewUnjoined(props) {
-  const { user } = useAuth0();
+  
 
   const [presentations, setPresentations] = useState([]);
 
   const { user_id } = props;
-  console.log("outside use effect", props.user_id);
+  
   useEffect(() => {
-    console.log("inside use effect", props.user_id);
+    
     async function callApi() {
       try {
         const response = await fetch(
@@ -26,9 +26,9 @@ function ViewUnjoined(props) {
 
         setPresentations(data);
 
-        console.log("presentations after api state", presentations);
+        
       } catch {
-        console.log("we had issues in the viewunjoined api call");
+        
       }
     }
     if (user_id) {
