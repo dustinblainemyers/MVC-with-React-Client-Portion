@@ -7,47 +7,34 @@ function ViewUnjoined(props) {
   const { user } = useAuth0();
 
   const [presentations, setPresentations] = useState([]);
-  const [apiData, setData] = useState([]);
-  const {user_id} = props;
-  console.log("outside use effect", props.user_id)
+
+  const { user_id } = props;
+  console.log("outside use effect", props.user_id);
   useEffect(() => {
-    console.log("inside use effect", props.user_id)
+    console.log("inside use effect", props.user_id);
     async function callApi() {
-    
-      
-
-      if (user_id) {
-
-        try {
-        
-          const response = await fetch(
-            
-            `http://localhost:3333/misc-endpoints/${user_id}`
-          );
-          // api call returns a list of presentations the user is not a part of.
+      try {
+        const response = await fetch(
+          `http://localhost:3333/misc-endpoints/${user_id}`
+        );
+        // api call returns a list of presentations the user is not a part of.
         // select distinct test_lesson.lesson_name
         // from test_lesson   inner join  lights on test_lesson.id = lights.lesson_id
         // inner join users on lights.users_id = users.id WHERE users.id != ${users_id}`
-          const data = await response.json();
-          setData(data)
-          
-          
-          setPresentations(data);  
+        const data = await response.json();
+        
 
-          console.log("presentations after api state", presentations)
-         } catch {
-           console.log(
-             "we had issues in the viewunjoined api call"
-           );
-         }
+        setPresentations(data);
+
+        console.log("presentations after api state", presentations);
+      } catch {
+        console.log("we had issues in the viewunjoined api call");
       }
-       
     }
-
-    callApi();
-  },[]);
-
-  
+    if (user_id) {
+      callApi();
+    }
+  }, []);
 
   const notFound = "You are not an audience member of any presentations.";
 
@@ -59,10 +46,7 @@ function ViewUnjoined(props) {
       {presentations.length > 0 ? (
         presentations.map((presentation, i) => (
           <>
-            <span key={presentation.id}>
-              {presentation.lesson_name}
-            </span>
-            
+            <span key={presentation.id}>{presentation.lesson_name}</span>
           </>
         ))
       ) : (
