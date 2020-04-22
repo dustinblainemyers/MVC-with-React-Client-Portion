@@ -22,7 +22,7 @@ function AllHosting() {
         console.log("api data", data);
         setPresentations(data);
       } catch {
-        console.log("There was an error in AllHosting ");
+        console.log("There was an error in AllHosting  ");
       }
     }
 
