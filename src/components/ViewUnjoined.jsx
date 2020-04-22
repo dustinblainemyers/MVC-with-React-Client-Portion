@@ -1,35 +1,28 @@
 import React, { useState, useEffect } from "react";
-
+import { useAuth0 } from "../react-auth0-spa";
 
 import "../App.css";
 
 function ViewUnjoined(props) {
-  
-
+  const { user } = useAuth0();
   const [presentations, setPresentations] = useState([]);
 
   const { user_id } = props;
-  
+
   useEffect(() => {
-    
     async function callApi() {
       try {
         const response = await fetch(
-          `http://localhost:3333/misc-endpoints/${user_id}`
+          `http://localhost:3333/misc-endpoints/${user.email}`
         );
         // api call returns a list of presentations the user is not a part of.
         // select distinct test_lesson.lesson_name
         // from test_lesson   inner join  lights on test_lesson.id = lights.lesson_id
         // inner join users on lights.users_id = users.id WHERE users.id != ${users_id}`
         const data = await response.json();
-        
 
         setPresentations(data);
-
-        
-      } catch {
-        
-      }
+      } catch {}
     }
     if (user_id) {
       callApi();
