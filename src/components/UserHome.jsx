@@ -31,22 +31,29 @@ const UserHome = () => {
   }, [user_id]);
 
   return (
-    <Row>
-      <Col>
-        <h1>Green Light Red Light</h1>
-
-        <hr></hr>
-        <p>Logged in as :{user.email}</p>
-        <center>
-          <LogInOut />
-        </center>
-        <Card>
-          <AllHosting />
-        </Card>
-        <Participating user_id={user_id} />
-        <ViewUnjoined user_id='8' />
-      </Col>
-    </Row>
+    <>
+      <Row>
+        <nav>
+          <div class='nav-wrapper'>
+            <a href='#' class='brand-logo'>
+              LightBoard
+              <h1>Green Light Red Light</h1>
+              Logged in as :{user.email}
+            </a>
+            <ul id='nav-mobile' class='right hide-on-med-and-down'></ul>
+          </div>
+        </nav>
+      </Row>
+      <Row>
+        <Col>
+          <Card>
+            <AllHosting />
+          </Card>
+          <Participating user_id={user_id} />
+          <ViewUnjoined user_id='8' />
+        </Col>
+      </Row>
+    </>
   );
 };
 
