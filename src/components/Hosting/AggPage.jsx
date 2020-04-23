@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Aggregate from "./Aggregate";
-import "../App.css";
+import "../../App.css";
 
 class AggPage extends Component {
   render() {

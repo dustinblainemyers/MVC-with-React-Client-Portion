@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0 } from "../../react-auth0-spa";
 import AggPage from "./AggPage";
 
-import "../App.css";
+import "../../App.css";
 
 function AllHosting() {
   const { loading, user } = useAuth0();
@@ -40,15 +40,13 @@ function AllHosting() {
       <hr></hr>
       {presentations.length > 0 ? (
         presentations.map((presentation) => (
-          
-            <>
-              <AggPage
-                presentation_id={presentation.id}
-                lesson_name={presentation.lesson_name}
-                key={presentation.id}
-              />
-            </>
-          
+          <>
+            <AggPage
+              presentation_id={presentation.id}
+              lesson_name={presentation.lesson_name}
+              key={presentation.id}
+            />
+          </>
         ))
       ) : (
         <p>You are not hosting any presentations currently.</p>

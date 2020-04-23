@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0 } from "../../react-auth0-spa";
 import { CardPanel, Col, Row } from "react-materialize";
 
-import "../App.css";
+import "../../App.css";
 
 function ParticipatingMain(props) {
   const { user } = useAuth0();
