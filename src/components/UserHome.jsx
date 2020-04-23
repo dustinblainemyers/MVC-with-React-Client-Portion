@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
 import AllHosting from "./AllHosting";
-import Participating from "./Participating";
+
 import ViewUnjoined from "./ViewUnjoined";
-import DummyComponent from "./DummyComponent";
+import ParticipatingMain from "./ParticipatingMain";
 import { Row, Col, Card } from "react-materialize";
 
 const UserHome = () => {
@@ -50,11 +50,11 @@ const UserHome = () => {
           <Card>
             <AllHosting />
           </Card>
-          <Participating user_id={user_id} />
+
           <ViewUnjoined user_id='8' />
         </Col>
         <Col>
-          <DummyComponent />
+          <ParticipatingMain />
         </Col>
       </Row>
     </>

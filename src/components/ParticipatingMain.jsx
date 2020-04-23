@@ -4,7 +4,7 @@ import { CardPanel, Col, Row } from "react-materialize";
 
 import "../App.css";
 
-function DummyComponent(props) {
+function ParticipatingMain(props) {
   const { user } = useAuth0();
 
   const [presentations, setPresentations] = useState([]);
@@ -105,4 +105,4 @@ function DummyComponent(props) {
   );
 }
 
-export default DummyComponent;
+export default ParticipatingMain;
