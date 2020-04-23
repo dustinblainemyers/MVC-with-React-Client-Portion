@@ -76,29 +76,32 @@ function DummyComponent(props) {
   const notFound = "You are not an audience member of any presentations.";
 
   return (
-    <Row>
-      {presentations.length > 0 ? (
-        presentations.map((presentation, i) => (
-          <>
-            <Col m={100} s={100} l={100}>
-              <CardPanel className='teal' key={presentation.id + i + 1000}>
-                <span className='white-text '>
-                  {presentation.lesson_name} {presentation.green_light}{" "}
-                </span>
-                <div
-                  className={presentation.green_light + ""}
-                  onClick={() =>
-                    toggleLight(presentation.id, i, presentation.green_light)
-                  }
-                ></div>
-              </CardPanel>
-            </Col>
-          </>
-        ))
-      ) : (
-        <p>{notFound}</p>
-      )}
-    </Row>
+    <CardPanel className='white'>
+      <span className='black-text'>Your Presentations</span>
+      <Row>
+        {presentations.length > 0 ? (
+          presentations.map((presentation, i) => (
+            <>
+              <Col m={100} s={100} l={100}>
+                <CardPanel className='white' key={presentation.id + i + 1000}>
+                  <span className='black-text '>
+                    {presentation.lesson_name} {presentation.green_light}{" "}
+                  </span>
+                  <div
+                    className={presentation.green_light + ""}
+                    onClick={() =>
+                      toggleLight(presentation.id, i, presentation.green_light)
+                    }
+                  ></div>
+                </CardPanel>
+              </Col>
+            </>
+          ))
+        ) : (
+          <p>{notFound}</p>
+        )}
+      </Row>
+    </CardPanel>
   );
 }
 
