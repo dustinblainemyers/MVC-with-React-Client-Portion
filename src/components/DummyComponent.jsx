@@ -19,7 +19,20 @@ function DummyComponent(props) {
           `http://localhost:3333/join-presentation/${user.email}`
         );
         const data = await response.json();
+
         console.log("api data", data);
+        //Comparer Function
+        function GetSortOrder(prop) {
+          return function (a, b) {
+            if (a[prop] > b[prop]) {
+              return 1;
+            } else if (a[prop] < b[prop]) {
+              return -1;
+            }
+            return 0;
+          };
+        }
+        data.sort(GetSortOrder("id"));
         setPresentations(data);
       } catch {
         console.log(
@@ -43,7 +56,18 @@ function DummyComponent(props) {
       `http://localhost:3333/join-presentation/${user.email}`
     );
     const data = await response.json();
-
+    //Comparer Function
+    function GetSortOrder(prop) {
+      return function (a, b) {
+        if (a[prop] > b[prop]) {
+          return 1;
+        } else if (a[prop] < b[prop]) {
+          return -1;
+        }
+        return 0;
+      };
+    }
+    data.sort(GetSortOrder("id"));
     setPresentations(data);
 
     // setPresentations([...presentations.splice(i,1,{'green_light':green_light})])
