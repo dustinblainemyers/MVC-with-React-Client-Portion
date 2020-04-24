@@ -37,14 +37,27 @@ class Aggregate extends Component {
       this.setState({ Green: false });
     }
     return (
-      <>
-        <h1>{this.props.lesson_name} hello </h1>
-
+      <CardPanel className='white'>
+        <span className='black-text'>Hosting</span>
         
-
-        <p className={this.state.Green + ""}></p>
-      </>
-    );
+          
+                <Col m={100} s={100} l={100}>
+                  <CardPanel className='white' key={presentation.id + i + 1000}>
+                    <span className='black-text '>
+                      {this.props.lesson_name} 
+                    </span>
+                    <div
+                      className={this.state.Green + ""}
+                      
+                    ></div>
+                  </CardPanel>
+                </Col>
+        
+        <CardPanel/>
+        
+            
+            )
   }
 }
 export default Aggregate;
+
