@@ -32,17 +32,15 @@ const UserHome = () => {
   }, [user_id]);
 
   return (
-    <>
-      <Row>
-        <Col>
-          <CreatePresentation />
-        </Col>
+    <Row>
+      <Col>
+        <CreatePresentation />
+      </Col>
 
-        <Col>
-          <ParticipatingMain />
-        </Col>
-      </Row>
-    </>
+      <Col>
+        <ParticipatingMain />
+      </Col>
+    </Row>
   );
 };
 

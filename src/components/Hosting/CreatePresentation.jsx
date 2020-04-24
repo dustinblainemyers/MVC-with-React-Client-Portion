@@ -20,6 +20,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import AllHosting from "./AllHosting";
+import { CardPanel, Col, Row } from "react-materialize";
 
 import "../../App.css";
 
@@ -85,17 +86,22 @@ function TopHostingStack() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          name='presentation_name'
-          value={presentation_name}
-          onChange={(e) => setPresentationname(e.target.value)}
-        />
+      <CardPanel className='white'>
+        <span className='black-text'>Your Presentations</span>
+        <Row>
+          <form onSubmit={handleSubmit}>
+            <input
+              type='text'
+              name='presentation_name'
+              value={presentation_name}
+              onChange={(e) => setPresentationname(e.target.value)}
+            />
 
-        <input type='submit' value='Submit' />
-      </form>
-      <AllHosting presentations={presentations} />
+            <input type='submit' value='Submit' />
+          </form>
+          <AllHosting presentations={presentations} />
+        </Row>
+      </CardPanel>
     </>
   );
 }
