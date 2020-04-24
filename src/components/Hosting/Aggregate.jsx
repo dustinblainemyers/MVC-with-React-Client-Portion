@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CardPanel, Col, Row } from "react-materialize";
 // import socketIOClient from "socket.io-client";
 
 class Aggregate extends Component {
@@ -37,27 +38,13 @@ class Aggregate extends Component {
       this.setState({ Green: false });
     }
     return (
-      <CardPanel className='white'>
-        <span className='black-text'>Hosting</span>
-        
-          
-                <Col m={100} s={100} l={100}>
-                  <CardPanel className='white' key={presentation.id + i + 1000}>
-                    <span className='black-text '>
-                      {this.props.lesson_name} 
-                    </span>
-                    <div
-                      className={this.state.Green + ""}
-                      
-                    ></div>
-                  </CardPanel>
-                </Col>
-        
-        <CardPanel/>
-        
-            
-            )
+      <Col m={100} s={100} l={100}>
+        <CardPanel className='white'>
+          <span className='black-text '>{this.props.lesson_name}</span>
+          <div className={this.state.Green + ""}></div>
+        </CardPanel>
+      </Col>
+    );
   }
 }
 export default Aggregate;
-
