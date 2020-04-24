@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
-import AllHosting from "./Hosting/AllHosting";
+
 import CreatePresentation from "./Hosting/CreatePresentation";
-import ViewUnjoined from "./ViewUnjoined";
+
 import ParticipatingMain from "./Participating/ParticipatingMain";
-import { Row, Col, Card } from "react-materialize";
+import { Row, Col } from "react-materialize";
 
 const UserHome = () => {
   const { user } = useAuth0();

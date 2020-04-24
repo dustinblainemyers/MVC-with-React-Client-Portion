@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import { CardPanel, Col, Row } from "react-materialize";
+import JsonSort from "../../utils/JsonSort";
 
 import "../../App.css";
 
@@ -21,18 +22,8 @@ function ParticipatingMain(props) {
         const data = await response.json();
 
         console.log("api data", data);
-        //Comparer Function
-        function GetSortOrder(prop) {
-          return function (a, b) {
-            if (a[prop] > b[prop]) {
-              return 1;
-            } else if (a[prop] < b[prop]) {
-              return -1;
-            }
-            return 0;
-          };
-        }
-        data.sort(GetSortOrder("id"));
+
+        data.sort(JsonSort("id"));
         setPresentations(data);
       } catch {
         console.log(

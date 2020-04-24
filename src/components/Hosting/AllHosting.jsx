@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
-import AggPage from "./AggPage";
+import Aggregate from "./Aggregate";
 import { CardPanel, Col, Row } from "react-materialize";
 
 import "../../App.css";
@@ -13,7 +13,7 @@ function AllHosting(props) {
       {presentations.length > 0 ? (
         presentations.map((presentation) => (
           <>
-            <AggPage
+            <Aggregate
               presentation_id={presentation.id}
               lesson_name={presentation.lesson_name}
               key={presentation.id}
