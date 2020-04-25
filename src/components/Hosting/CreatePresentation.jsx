@@ -23,6 +23,13 @@ function TopHostingStack() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const accessKey =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+
+    console.log("accesskey", accessKey);
+    // need to create a function that checks for uniqueness -- right now a uniqe constraint sql side is preventing
+    // a non-unique access key from being assigned but I want a new access key to be generated in this case instead of erroring out.
     const createResponse = await fetch(
       `http://localhost:3333/create-presentation/generate/hello`,
       {
@@ -34,6 +41,7 @@ function TopHostingStack() {
         body: JSON.stringify({
           email: 8,
           presentation_name: presentation_name,
+          accessKey: accessKey,
         }),
       }
     );
