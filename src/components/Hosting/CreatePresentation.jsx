@@ -49,7 +49,10 @@ function TopHostingStack() {
     if (createResponse.status === 400) {
       generateMessage("Something went wrong creating this lesson", setMessage);
     } else {
-      generateMessage("Successfully created lesson", setMessage);
+      generateMessage(
+        `Successfully created lesson.  Copy and paste the following key to share this presentation : ${accessKey} `,
+        setMessage
+      );
     }
 
     const response = await fetch(
