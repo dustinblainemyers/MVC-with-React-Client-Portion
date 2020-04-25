@@ -12,6 +12,7 @@ function TopHostingStack() {
 
   const [presentations, setPresentations] = useState([]);
   const [presentation_name, setPresentationname] = useState("");
+  const [lessonAdded, setLessonAdded] = useState(null);
 
   useEffect(() => {
     jsonFromApi(
@@ -33,6 +34,7 @@ function TopHostingStack() {
         presentation_name: presentation_name,
       }),
     });
+    generateAddedMessage();
     const response = await fetch(
       `http://localhost:3333/create-presentation/${user.email}`
     );
@@ -63,6 +65,21 @@ function TopHostingStack() {
     setPresentations(data);
   };
 
+  const generateAddedMessage = () => {
+    setLessonAdded(
+      <>
+        <div>
+          lesson added
+          <button onClick={removeAddedMessage}>Got it !</button>
+        </div>
+      </>
+    );
+  };
+
+  const removeAddedMessage = () => {
+    setLessonAdded(null);
+  };
+
   return (
     <>
       <CardPanel className='white'>
@@ -78,6 +95,7 @@ function TopHostingStack() {
 
             <input type='submit' value='Submit' />
           </form>
+          {lessonAdded}
           <AllHosting
             presentations={presentations}
             handleDelete={handleDelete.bind(this)}
