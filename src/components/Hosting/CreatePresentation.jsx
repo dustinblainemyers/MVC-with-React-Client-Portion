@@ -12,7 +12,7 @@ function TopHostingStack() {
 
   const [presentations, setPresentations] = useState([]);
   const [presentation_name, setPresentationname] = useState("");
-  const [lessonAdded, setLessonAdded] = useState(null);
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     jsonFromApi(
@@ -23,18 +23,27 @@ function TopHostingStack() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3333/create-presentation/generate/hello`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: 8,
-        presentation_name: presentation_name,
-      }),
-    });
-    generateAddedMessage();
+    const createResponse = await fetch(
+      `http://localhost:3333/create-presentation/generate/hello`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: 8,
+          presentation_name: presentation_name,
+        }),
+      }
+    );
+    console.log(createResponse);
+    if (createResponse.status === 400) {
+      generateMessage("Something went wrong creating this lesson", setMessage);
+    } else {
+      generateMessage("Successfully created lesson", setMessage);
+    }
+
     const response = await fetch(
       `http://localhost:3333/create-presentation/${user.email}`
     );
@@ -65,19 +74,25 @@ function TopHostingStack() {
     setPresentations(data);
   };
 
-  const generateAddedMessage = () => {
-    setLessonAdded(
+  const generateMessage = (message, setter) => {
+    setter(
       <>
         <div>
-          lesson added
-          <button onClick={removeAddedMessage}>Got it !</button>
+          {message}
+          <button
+            onClick={() => {
+              removeAddedMessage(setter);
+            }}
+          >
+            Got it !
+          </button>
         </div>
       </>
     );
   };
 
-  const removeAddedMessage = () => {
-    setLessonAdded(null);
+  const removeAddedMessage = (setterToNull) => {
+    setterToNull(null);
   };
 
   return (
@@ -95,7 +110,7 @@ function TopHostingStack() {
 
             <input type='submit' value='Submit' />
           </form>
-          {lessonAdded}
+          {message}
           <AllHosting
             presentations={presentations}
             handleDelete={handleDelete.bind(this)}
