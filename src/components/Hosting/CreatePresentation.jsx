@@ -3,6 +3,7 @@ import { useAuth0 } from "../../react-auth0-spa";
 import AllHosting from "./AllHosting";
 import { CardPanel, Col, Row } from "react-materialize";
 import JsonSort from "../../utils/JsonSort";
+import getWithAwait from "../../utils/getWithAwait";
 
 import "../../App.css";
 
@@ -11,25 +12,17 @@ function TopHostingStack() {
 
   const [presentations, setPresentations] = useState([]);
   const [presentation_name, setPresentationname] = useState("");
-
+  // setPresentations(data);
+  // `http://localhost:3333/create-presentation/${user.email}`
   useEffect(() => {
-    async function callApi() {
-      if (user.email === false) {
-        return false;
-      }
-      try {
-        const response = await fetch(
-          `http://localhost:3333/create-presentation/${user.email}`
-        );
-        const data = await response.json();
-        console.log("api data", data);
-        setPresentations(data);
-      } catch {
-        console.log("There was an error in AllHosting  ");
-      }
-    }
-
-    callApi();
+    const getHostedPresentations = async () => {
+      const data = await getWithAwait(
+        `http://localhost:3333/create-presentation/${user.email}`
+      );
+      setPresentations(data);
+      console.log(data);
+    };
+    getHostedPresentations();
   }, [user.email]);
 
   const handleSubmit = async (e) => {
@@ -52,8 +45,6 @@ function TopHostingStack() {
 
     data.sort(JsonSort("id"));
     setPresentations(data);
-
-    // setPresentations([...presentations.splice(i,1,{'green_light':green_light})])
   };
 
   return (
