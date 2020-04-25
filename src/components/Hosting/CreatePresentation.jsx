@@ -4,6 +4,7 @@ import AllHosting from "./AllHosting";
 import { CardPanel, Col, Row } from "react-materialize";
 import JsonSort from "../../utils/JsonSort";
 import getWithAwait from "../../utils/getWithAwait";
+import jsonFromApi from "../../utils/jsonFromApi";
 
 import "../../App.css";
 
@@ -12,17 +13,12 @@ function TopHostingStack() {
 
   const [presentations, setPresentations] = useState([]);
   const [presentation_name, setPresentationname] = useState("");
-  // setPresentations(data);
-  // `http://localhost:3333/create-presentation/${user.email}`
+
   useEffect(() => {
-    const getHostedPresentations = async () => {
-      const data = await getWithAwait(
-        `http://localhost:3333/create-presentation/${user.email}`
-      );
-      setPresentations(data);
-      console.log(data);
-    };
-    getHostedPresentations();
+    jsonFromApi(
+      setPresentations,
+      `http://localhost:3333/create-presentation/${user.email}`
+    );
   }, [user.email]);
 
   const handleSubmit = async (e) => {
