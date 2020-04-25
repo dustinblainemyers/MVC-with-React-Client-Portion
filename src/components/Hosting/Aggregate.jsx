@@ -42,6 +42,9 @@ class Aggregate extends Component {
         <CardPanel className='white'>
           <span className='black-text '>{this.props.lesson_name}</span>
           <div className={this.state.Green + ""}></div>
+          <button onClick={() => this.props.handleDelete(this.props.id)}>
+            Delete
+          </button>
         </CardPanel>
       </Col>
     );

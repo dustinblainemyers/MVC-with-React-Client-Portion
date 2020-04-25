@@ -1,41 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import { CardPanel, Col, Row } from "react-materialize";
-import JsonSort from "../../utils/JsonSort";
-
+import jsonFromApi from "../../utils/jsonFromApi";
 import "../../App.css";
 
-function ParticipatingMain(props) {
+function ParticipatingMain() {
   const { user } = useAuth0();
 
   const [presentations, setPresentations] = useState([]);
 
   useEffect(() => {
-    async function callApi() {
-      if (user.email === false) {
-        return false;
-      }
-      try {
-        const response = await fetch(
-          `http://localhost:3333/join-presentation/${user.email}`
-        );
-        const data = await response.json();
-
-        console.log("api data", data);
-
-        data.sort(JsonSort("id"));
-        setPresentations(data);
-      } catch {
-        console.log(
-          "there was an error in the participating component api call"
-        );
-      }
-    }
-
-    callApi();
+    getUpdate();
   }, [user.email]);
 
-  const toggleLight = async (light_id, i, green_light) => {
+  const toggleLight = async (light_id, green_light) => {
     console.log(`${light_id}light has been toggled`);
     green_light = !green_light;
     console.log("present", presentations);
@@ -43,29 +21,19 @@ function ParticipatingMain(props) {
       `http://localhost:3333/join-presentation/lights/togglelight/${light_id}`,
       { method: "PUT" }
     );
-    const response = await fetch(
-      `http://localhost:3333/join-presentation/${user.email}`
-    );
-    const data = await response.json();
-    //Comparer Function
-    function GetSortOrder(prop) {
-      return function (a, b) {
-        if (a[prop] > b[prop]) {
-          return 1;
-        } else if (a[prop] < b[prop]) {
-          return -1;
-        }
-        return 0;
-      };
-    }
-    data.sort(GetSortOrder("id"));
-    setPresentations(data);
+    getUpdate();
+  };
 
-    // setPresentations([...presentations.splice(i,1,{'green_light':green_light})])
+  const getUpdate = () => {
+    jsonFromApi(
+      setPresentations,
+      `http://localhost:3333/join-presentation/${user.email}`,
+      "id"
+    );
   };
 
   const notFound = "You are not an audience member of any presentations.";
-  //   testing somthing
+
   return (
     <CardPanel className='white'>
       <span className='black-text'>Your Presentations</span>

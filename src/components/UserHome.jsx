@@ -15,7 +15,7 @@ const UserHome = () => {
 
   useEffect(() => {
     jsonFromApi(setLocalUser, `http://localhost:3333/users/${user.email}`);
-  }, [localUser]);
+  }, [user.email]);
 
   return (
     <Row>

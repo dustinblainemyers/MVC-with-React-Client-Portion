@@ -3,7 +3,6 @@ import { useAuth0 } from "../../react-auth0-spa";
 import AllHosting from "./AllHosting";
 import { CardPanel, Col, Row } from "react-materialize";
 import JsonSort from "../../utils/JsonSort";
-import getWithAwait from "../../utils/getWithAwait";
 import jsonFromApi from "../../utils/jsonFromApi";
 
 import "../../App.css";
@@ -43,6 +42,27 @@ function TopHostingStack() {
     setPresentations(data);
   };
 
+  const handleDelete = async (lesson_id) => {
+    await fetch(`http://localhost:3333/create-presentation/delete`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        lesson_id: lesson_id,
+      }),
+    });
+    console.log(lesson_id);
+    const response = await fetch(
+      `http://localhost:3333/create-presentation/${user.email}`
+    );
+    const data = await response.json();
+
+    data.sort(JsonSort("id"));
+    setPresentations(data);
+  };
+
   return (
     <>
       <CardPanel className='white'>
@@ -58,7 +78,10 @@ function TopHostingStack() {
 
             <input type='submit' value='Submit' />
           </form>
-          <AllHosting presentations={presentations} />
+          <AllHosting
+            presentations={presentations}
+            handleDelete={handleDelete.bind(this)}
+          />
         </Row>
       </CardPanel>
     </>

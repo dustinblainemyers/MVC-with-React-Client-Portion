@@ -16,7 +16,8 @@ function AllHosting(props) {
             <Aggregate
               presentation_id={presentation.id}
               lesson_name={presentation.lesson_name}
-              key={presentation.id}
+              id={presentation.id}
+              handleDelete={props.handleDelete}
             />
           </>
         ))
