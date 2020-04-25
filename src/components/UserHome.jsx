@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
+import getWithAwait from "../utils/getWithAwait";
 
 import CreatePresentation from "./Hosting/CreatePresentation";
 
@@ -9,26 +10,17 @@ import { Row, Col } from "react-materialize";
 
 const UserHome = () => {
   const { user } = useAuth0();
-  const [user_id, setUserID] = useState([]);
-
-  async function callApi() {
-    if (user.email === false) {
-      return false;
-    }
-    try {
-      const response = await fetch(`http://localhost:3333/users/${user.email}`);
-      const data = await response.json();
-
-      setUserID(data.id);
-    } catch {
-      // setUserID(1)}
-
-      console.log("there was an error with an api call in UserHome ");
-    }
-  }
+  const [user_id, setUserID] = useState("");
 
   useEffect(() => {
-    callApi();
+    const getUserId = async () => {
+      const data = await getWithAwait(
+        `http://localhost:3333/users/${user.email}`
+      );
+      setUserID(data.id);
+      console.log(data);
+    };
+    getUserId();
   }, [user_id]);
 
   return (
