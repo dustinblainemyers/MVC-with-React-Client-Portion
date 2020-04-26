@@ -3,11 +3,14 @@ import { useAuth0 } from "../../react-auth0-spa";
 import { CardPanel, Col, Row } from "react-materialize";
 import jsonFromApi from "../../utils/jsonFromApi";
 import "../../App.css";
+import JsonSort from "../../utils/JsonSort";
 
-function ParticipatingMain() {
+function ParticipatingMain(props) {
   const { user } = useAuth0();
 
   const [presentations, setPresentations] = useState([]);
+  const [accessKey, setAccessKey] = useState("");
+  const { localUser } = props;
 
   useEffect(() => {
     getUpdate();
@@ -32,12 +35,58 @@ function ParticipatingMain() {
     );
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const addLightResponse = await fetch(
+      `http://localhost:3333/join-presentation/generate`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          users_id: localUser.id,
+          access_key: accessKey,
+        }),
+      }
+    );
+    console.log(addLightResponse);
+    // if (addLightResponse.status === 400) {
+    //   generateMessage(
+    //     "Something went wrong with joining this lesson.  Check your access key and try again",
+    //     setMessage
+    //   );
+    // } else {
+    //   generateMessage(`Successfully joined lesson: ${accessKey} `, setMessage);
+    // }
+
+    const response = await fetch(
+      `http://localhost:3333/join-presentation/${user.email}`
+    );
+    const data = await response.json();
+
+    data.sort(JsonSort("id"));
+    setPresentations(data);
+  };
+
   const notFound = "You are not an audience member of any presentations.";
 
   return (
     <CardPanel className='white'>
       <span className='black-text'>Your Presentations</span>
       <Row>
+        <form onSubmit={handleSubmit}>
+          <input
+            type='text'
+            name='accessKey'
+            value={accessKey}
+            onChange={(e) => setAccessKey(e.target.value)}
+          />
+
+          <input type='submit' value='Submit' />
+        </form>
         {presentations.length > 0 ? (
           presentations.map((presentation, i) => (
             <>
