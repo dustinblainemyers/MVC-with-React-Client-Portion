@@ -73,6 +73,28 @@ function ParticipatingMain(props) {
 
   const notFound = "You are not an audience member of any presentations.";
 
+  const handleDelete = async (users_id, selectedAccessKey) => {
+    await fetch(`http://localhost:3333/join-presentation/delete`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        access_key: selectedAccessKey,
+        users_id: users_id,
+      }),
+    });
+    console.log(selectedAccessKey);
+    const response = await fetch(
+      `http://localhost:3333/join-presentation/${user.email}`
+    );
+    const data = await response.json();
+
+    data.sort(JsonSort("id"));
+    setPresentations(data);
+  };
+
   return (
     <CardPanel className='white'>
       <span className='black-text'>Your Presentations</span>
@@ -91,16 +113,31 @@ function ParticipatingMain(props) {
           presentations.map((presentation, i) => (
             <>
               <Col m={100} s={100} l={100}>
-                <CardPanel className='white' key={presentation.id + i + 1000}>
+                <CardPanel
+                  className='white'
+                  key={presentation.access_key + i + 1000}
+                >
                   <span className='black-text '>
                     {presentation.lesson_name} {presentation.green_light}{" "}
+                    {presentation.access_key}
                   </span>
                   <div
                     className={presentation.green_light + ""}
                     onClick={() =>
-                      toggleLight(presentation.id, i, presentation.green_light)
+                      toggleLight(
+                        presentation.access_key,
+                        i,
+                        presentation.green_light
+                      )
                     }
                   ></div>
+                  <button
+                    onClick={() =>
+                      handleDelete(localUser.id, presentation.access_key)
+                    }
+                  >
+                    Delete
+                  </button>
                 </CardPanel>
               </Col>
             </>
