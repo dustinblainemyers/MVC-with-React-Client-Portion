@@ -7,9 +7,9 @@ import jsonFromApi from "../../utils/jsonFromApi";
 
 import "../../App.css";
 
-function TopHostingStack() {
+function TopHostingStack(props) {
   const { user } = useAuth0();
-
+  const { localUser } = props;
   const [presentations, setPresentations] = useState([]);
   const [presentation_name, setPresentationname] = useState("");
   const [message, setMessage] = useState(null);
@@ -39,7 +39,7 @@ function TopHostingStack() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: 8,
+          user_id: localUser.id,
           presentation_name: presentation_name,
           accessKey: accessKey,
         }),

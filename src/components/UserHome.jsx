@@ -20,7 +20,7 @@ const UserHome = () => {
   return (
     <Row>
       <Col>
-        <CreatePresentation />
+        <CreatePresentation localUser={localUser} />
       </Col>
 
       <Col>
