@@ -24,7 +24,7 @@ const UserHome = () => {
       </Col>
 
       <Col>
-        <ParticipatingMain />
+        <ParticipatingMain localUser={localUser} />
       </Col>
     </Row>
   );
