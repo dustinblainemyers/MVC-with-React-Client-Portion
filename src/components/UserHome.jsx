@@ -1,63 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
-import AllHosting from "./AllHosting";
-import Participating from "./Participating";
-import ViewUnjoined from "./ViewUnjoined";
-import DummyComponent from "./DummyComponent";
-import { Row, Col, Card } from "react-materialize";
+import getWithAwait from "../utils/getWithAwait";
+import jsonFromApi from "../utils/jsonFromApi";
+
+import CreatePresentation from "./Hosting/CreatePresentation";
+
+import ParticipatingMain from "./Participating/ParticipatingMain";
+import { Row, Col } from "react-materialize";
 
 const UserHome = () => {
   const { user } = useAuth0();
-  const [user_id, setUserID] = useState([]);
-
-  async function callApi() {
-    if (user.email === false) {
-      return false;
-    }
-    try {
-      const response = await fetch(`http://localhost:3333/users/${user.email}`);
-      const data = await response.json();
-
-      setUserID(data.id);
-    } catch {
-      // setUserID(1)}
-
-      console.log("there was an error with an api call in UserHome ");
-    }
-  }
+  const [localUser, setLocalUser] = useState([]);
 
   useEffect(() => {
-    callApi();
-  }, [user_id]);
+    jsonFromApi(setLocalUser, `http://localhost:3333/users/${user.email}`);
+  }, [user.email]);
 
   return (
-    <>
-      <Row>
-        <nav>
-          <div class='nav-extended'>
-            <a href='#' class='brand-logo'>
-              LightBoard
-              <h1>Green Light Red Light</h1>
-              Logged in as :{user.email}
-            </a>
-            <ul id='nav-mobile' class='right hide-on-med-and-down'></ul>
-          </div>
-        </nav>
-      </Row>
-      <Row>
-        <Col>
-          <Card>
-            <AllHosting />
-          </Card>
-          <Participating user_id={user_id} />
-          <ViewUnjoined user_id='8' />
-        </Col>
-        <Col>
-          <DummyComponent />
-        </Col>
-      </Row>
-    </>
+    <Row>
+      <Col>
+        <CreatePresentation localUser={localUser} />
+      </Col>
+
+      <Col>
+        <ParticipatingMain localUser={localUser} />
+      </Col>
+    </Row>
   );
 };
 
