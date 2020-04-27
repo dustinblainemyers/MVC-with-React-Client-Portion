@@ -14,7 +14,7 @@ const UserHome = () => {
   const [localUser, setLocalUser] = useState([]);
 
   useEffect(() => {
-    jsonFromApi(setLocalUser, `http://localhost:3333/users/${user.email}`);
+    jsonFromApi(setLocalUser, `http://api/users/${user.email}`);
   }, [user.email]);
 
   return (
