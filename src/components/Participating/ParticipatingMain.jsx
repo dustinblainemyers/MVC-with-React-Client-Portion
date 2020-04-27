@@ -20,17 +20,16 @@ function ParticipatingMain(props) {
     console.log(`${light_id}light has been toggled`);
     green_light = !green_light;
     console.log("present", presentations);
-    await fetch(
-      `http://localhost:3333/join-presentation/lights/togglelight/${light_id}`,
-      { method: "PUT" }
-    );
+    await fetch(`http://api/join-presentation/lights/togglelight/${light_id}`, {
+      method: "PUT",
+    });
     getUpdate();
   };
 
   const getUpdate = () => {
     jsonFromApi(
       setPresentations,
-      `http://localhost:3333/join-presentation/${user.email}`,
+      `http://api/join-presentation/${user.email}`,
       "id"
     );
   };
@@ -39,7 +38,7 @@ function ParticipatingMain(props) {
     e.preventDefault();
 
     const addLightResponse = await fetch(
-      `http://localhost:3333/join-presentation/generate`,
+      `http://api/join-presentation/generate`,
       {
         method: "POST",
         headers: {
@@ -62,9 +61,7 @@ function ParticipatingMain(props) {
     //   generateMessage(`Successfully joined lesson: ${accessKey} `, setMessage);
     // }
 
-    const response = await fetch(
-      `http://localhost:3333/join-presentation/${user.email}`
-    );
+    const response = await fetch(`http://api/join-presentation/${user.email}`);
     const data = await response.json();
 
     data.sort(JsonSort("id"));
@@ -74,7 +71,7 @@ function ParticipatingMain(props) {
   const notFound = "You are not an audience member of any presentations.";
 
   const handleDelete = async (users_id, selectedAccessKey) => {
-    await fetch(`http://localhost:3333/join-presentation/delete`, {
+    await fetch(`http://api/join-presentation/delete`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -86,9 +83,7 @@ function ParticipatingMain(props) {
       }),
     });
     console.log(selectedAccessKey);
-    const response = await fetch(
-      `http://localhost:3333/join-presentation/${user.email}`
-    );
+    const response = await fetch(`http://api/join-presentation/${user.email}`);
     const data = await response.json();
 
     data.sort(JsonSort("id"));
