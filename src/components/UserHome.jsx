@@ -8,10 +8,13 @@ import CreatePresentation from "./Hosting/CreatePresentation";
 
 import ParticipatingMain from "./Participating/ParticipatingMain";
 import { Row, Col } from "react-materialize";
+import Config from "../config";
 
 const UserHome = () => {
   const { user } = useAuth0();
-  const [localUser, setLocalUser] = useState([]);
+  const { api } = Config;
+  const [localUser, setLocalUser] = useState(null);
+
   const userdependentComponents = (
     <Row>
       <Col>
@@ -25,14 +28,15 @@ const UserHome = () => {
   );
 
   useEffect(() => {
-    jsonFromApi(setLocalUser, `http://localhost:3333/users/${user.email}`);
+    console.log("api", api);
+    jsonFromApi(setLocalUser, `http://${api}/users/${user.email}`);
   }, [user.email]);
 
   return (
     <>
-      {localUser.id && userdependentComponents}
+      {localUser && userdependentComponents}
 
-      {!localUser.id && <p>There was a problem accessing your user data. </p>}
+      {!localUser && <p>There was a problem accessing your user data. </p>}
     </>
   );
 };
