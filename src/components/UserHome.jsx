@@ -12,12 +12,7 @@ import { Row, Col } from "react-materialize";
 const UserHome = () => {
   const { user } = useAuth0();
   const [localUser, setLocalUser] = useState([]);
-
-  useEffect(() => {
-    jsonFromApi(setLocalUser, `http://localhost:3333/users/${user.email}`);
-  }, [user.email]);
-
-  return (
+  const userdependentComponents = (
     <Row>
       <Col>
         <CreatePresentation localUser={localUser} />
@@ -27,6 +22,18 @@ const UserHome = () => {
         <ParticipatingMain localUser={localUser} />
       </Col>
     </Row>
+  );
+
+  useEffect(() => {
+    jsonFromApi(setLocalUser, `http://localhost:3333/users/${user.email}`);
+  }, [user.email]);
+
+  return (
+    <>
+      {localUser.id && userdependentComponents}
+
+      {!localUser.id && <p>There was a problem accessing your user data. </p>}
+    </>
   );
 };
 
