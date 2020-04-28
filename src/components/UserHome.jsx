@@ -29,7 +29,7 @@ const UserHome = () => {
 
   useEffect(() => {
     console.log("api", api);
-    jsonFromApi(setLocalUser, `http://localhost:3000/users/${user.email}`);
+    jsonFromApi(setLocalUser, `http://${api}/users/${user.email}`);
   }, [user.email]);
 
   return (
