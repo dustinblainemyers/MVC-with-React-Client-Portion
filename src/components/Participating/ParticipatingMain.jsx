@@ -97,7 +97,7 @@ function ParticipatingMain(props) {
 
   return (
     <CardPanel className='white'>
-      <span className='black-text'>Your Presentations</span>
+      <span className='black-text'>Viewing</span>
       <Row>
         <form onSubmit={handleSubmit}>
           <input

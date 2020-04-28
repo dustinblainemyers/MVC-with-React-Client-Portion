@@ -109,7 +109,7 @@ function TopHostingStack(props) {
   return (
     <>
       <CardPanel className='white'>
-        <span className='black-text'>Your Presentations</span>
+        <span className='black-text'>Hosting</span>
         <Row>
           <form onSubmit={handleSubmit}>
             <input
