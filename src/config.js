@@ -6,4 +6,3 @@ const Config = {
 };
 
 export default Config;
-//change to test something
