@@ -4,7 +4,7 @@ import { CardPanel, Col, Row } from "react-materialize";
 import jsonFromApi from "../../utils/jsonFromApi";
 import "../../App.css";
 import JsonSort from "../../utils/JsonSort";
-import Config from "../config";
+import Config from "../../config";
 
 function ParticipatingMain(props) {
   const { user } = useAuth0();

@@ -4,7 +4,7 @@ import AllHosting from "./AllHosting";
 import { CardPanel, Col, Row } from "react-materialize";
 import JsonSort from "../../utils/JsonSort";
 import jsonFromApi from "../../utils/jsonFromApi";
-import Config from "../config";
+import Config from "../../config";
 
 import "../../App.css";
 
