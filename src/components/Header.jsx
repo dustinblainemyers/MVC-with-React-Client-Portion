@@ -8,7 +8,7 @@ function Header() {
   return (
     <div class='navbar-fixed'>
       <nav>
-        <div class='nav-wrapper'>
+        <div class='nav-wrapper light-blue '>
           {/* need get rid of link but keep styling */}
           <a href='#' class='brand-logo center'>
             Status
