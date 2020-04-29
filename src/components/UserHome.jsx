@@ -3,6 +3,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
 import getWithAwait from "../utils/getWithAwait";
 import jsonFromApi from "../utils/jsonFromApi";
+import Header from "./Header";
 
 import CreatePresentation from "./Hosting/CreatePresentation";
 
@@ -34,6 +35,7 @@ const UserHome = () => {
 
   return (
     <>
+      <Header />
       {localUser && userdependentComponents}
 
       {!localUser && <p>There was a problem accessing your user data. </p>}
