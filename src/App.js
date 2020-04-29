@@ -4,6 +4,7 @@ import UserHome from "./components/UserHome";
 
 import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from "./components/Header";
 import "./App.css";
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
   return (
     <Router>
       <Route path='/' exact>
-        <h1>Green Light Red Light</h1>
+        <Header />
+
         <div className='container '>
           <div className='login '>
             <LogInOut />
