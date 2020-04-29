@@ -12,7 +12,7 @@ function TopHostingStack(props) {
   const { user } = useAuth0();
   const { localUser } = props;
   const [presentations, setPresentations] = useState([]);
-  const [presentation_name, setPresentationname] = useState("");
+  const [presentationName, setPresentationName] = useState("");
   const [message, setMessage] = useState(null);
   const { api } = Config;
   useEffect(() => {
@@ -38,7 +38,7 @@ function TopHostingStack(props) {
         },
         body: JSON.stringify({
           user_id: localUser.id,
-          presentation_name: presentation_name,
+          presentationName: presentationName,
           accessKey: accessKey,
         }),
       }
@@ -58,6 +58,7 @@ function TopHostingStack(props) {
 
     data.sort(JsonSort("id"));
     setPresentations(data);
+    setPresentationName("");
   };
 
   const handleDelete = async (lesson_id) => {
@@ -108,9 +109,9 @@ function TopHostingStack(props) {
           <form onSubmit={handleSubmit}>
             <input
               type='text'
-              name='presentation_name'
-              value={presentation_name}
-              onChange={(e) => setPresentationname(e.target.value)}
+              name='presentationName'
+              value={presentationName}
+              onChange={(e) => setPresentationName(e.target.value)}
             />
 
             <input type='submit' value='Submit' />

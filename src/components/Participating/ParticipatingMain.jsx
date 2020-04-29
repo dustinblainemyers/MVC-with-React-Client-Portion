@@ -64,6 +64,7 @@ function ParticipatingMain(props) {
 
     data.sort(JsonSort("id"));
     setPresentations(data);
+    setAccessKey("");
   };
 
   const notFound = "You are not an audience member of any presentations.";
