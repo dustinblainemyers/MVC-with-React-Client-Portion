@@ -4,6 +4,7 @@ import AllHosting from "./AllHosting";
 import { CardPanel, Col, Row } from "react-materialize";
 import JsonSort from "../../utils/JsonSort";
 import jsonFromApi from "../../utils/jsonFromApi";
+import Config from "../config";
 
 import "../../App.css";
 
@@ -13,11 +14,11 @@ function TopHostingStack(props) {
   const [presentations, setPresentations] = useState([]);
   const [presentation_name, setPresentationname] = useState("");
   const [message, setMessage] = useState(null);
-
+  const { api } = Config;
   useEffect(() => {
     jsonFromApi(
       setPresentations,
-      `http://localhost:3333/create-presentation/${user.email}`
+      `http://${api}/create-presentation/${user.email}`
     );
   }, [user.email]);
 
@@ -31,7 +32,7 @@ function TopHostingStack(props) {
     // need to create a function that checks for uniqueness -- right now a uniqe constraint sql side is preventing
     // a non-unique access key from being assigned but I want a new access key to be generated in this case instead of erroring out.
     const createResponse = await fetch(
-      `http://localhost:3333/create-presentation/generate/hello`,
+      `http://${api}/create-presentation/generate/hello`,
       {
         method: "POST",
         headers: {
@@ -56,7 +57,7 @@ function TopHostingStack(props) {
     }
 
     const response = await fetch(
-      `http://localhost:3333/create-presentation/${user.email}`
+      `http://${api}/create-presentation/${user.email}`
     );
     const data = await response.json();
 
@@ -65,7 +66,7 @@ function TopHostingStack(props) {
   };
 
   const handleDelete = async (lesson_id) => {
-    await fetch(`http://localhost:3333/create-presentation/delete`, {
+    await fetch(`http://${api}/create-presentation/delete`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -77,7 +78,7 @@ function TopHostingStack(props) {
     });
     console.log(lesson_id);
     const response = await fetch(
-      `http://localhost:3333/create-presentation/${user.email}`
+      `http://${api}/create-presentation/${user.email}`
     );
     const data = await response.json();
 

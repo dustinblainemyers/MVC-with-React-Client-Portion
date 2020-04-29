@@ -4,10 +4,11 @@ import { CardPanel, Col, Row } from "react-materialize";
 import jsonFromApi from "../../utils/jsonFromApi";
 import "../../App.css";
 import JsonSort from "../../utils/JsonSort";
+import Config from "../config";
 
 function ParticipatingMain(props) {
   const { user } = useAuth0();
-
+  const { api } = Config;
   const [presentations, setPresentations] = useState([]);
   const [accessKey, setAccessKey] = useState("");
   const { localUser } = props;
@@ -21,7 +22,7 @@ function ParticipatingMain(props) {
     green_light = !green_light;
     console.log("present", presentations);
     await fetch(
-      `http://localhost:3333/join-presentation/lights/togglelight/${light_id}`,
+      `http://${api}/join-presentation/lights/togglelight/${light_id}`,
       { method: "PUT" }
     );
     getUpdate();
@@ -30,7 +31,7 @@ function ParticipatingMain(props) {
   const getUpdate = () => {
     jsonFromApi(
       setPresentations,
-      `http://localhost:3333/join-presentation/${user.email}`,
+      `http://${api}/join-presentation/${user.email}`,
       "id"
     );
   };
@@ -39,7 +40,7 @@ function ParticipatingMain(props) {
     e.preventDefault();
 
     const addLightResponse = await fetch(
-      `http://localhost:3333/join-presentation/generate`,
+      `http://${api}/join-presentation/generate`,
       {
         method: "POST",
         headers: {
@@ -63,7 +64,7 @@ function ParticipatingMain(props) {
     // }
 
     const response = await fetch(
-      `http://localhost:3333/join-presentation/${user.email}`
+      `http://${api}/join-presentation/${user.email}`
     );
     const data = await response.json();
 
@@ -74,7 +75,7 @@ function ParticipatingMain(props) {
   const notFound = "You are not an audience member of any presentations.";
 
   const handleDelete = async (users_id, selectedAccessKey) => {
-    await fetch(`http://localhost:3333/join-presentation/delete`, {
+    await fetch(`http://${api}/join-presentation/delete`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -87,7 +88,7 @@ function ParticipatingMain(props) {
     });
     console.log(selectedAccessKey);
     const response = await fetch(
-      `http://localhost:3333/join-presentation/${user.email}`
+      `http://${api}/join-presentation/${user.email}`
     );
     const data = await response.json();
 
