@@ -18,7 +18,7 @@ const UserHome = () => {
 
   const userdependentComponents = (
     <Row>
-      <Col>
+      <Col className='yellow'>
         <CreatePresentation localUser={localUser} />
       </Col>
 
