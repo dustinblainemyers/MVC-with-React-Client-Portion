@@ -22,8 +22,8 @@ function App() {
     <Router>
       <Switch>
         <Route path='/' exact>
+          <Header />
           <div className='main-container'>
-            <Header />
             <div className='hero'>
               <div className='hero-text'></div>
               <div className='hero-image'>

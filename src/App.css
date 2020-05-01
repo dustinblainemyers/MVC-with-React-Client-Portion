@@ -2,6 +2,9 @@ body {
   background-color: #e8ebf7;
 }
 
+.navbar-fixed {
+  width: 600px;
+}
 .main-container {
   display: flex;
   max-width: 1200px;
