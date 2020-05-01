@@ -1,9 +1,10 @@
 import React from "react";
 import LogInOut from "./components/LogInOut";
 import UserHome from "./components/UserHome";
+import test404 from "./components/test404";
 
 import { useAuth0 } from "./react-auth0-spa";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import "./App.css";
 
@@ -16,17 +17,20 @@ function App() {
 
   return (
     <Router>
-      <Route path='/' exact>
-        <Header />
+      <Switch>
+        <Route path='/' exact>
+          <Header />
 
-        <div className='container '>
-          <div className='login '>
-            <LogInOut />
+          <div className='container '>
+            <div className='login '>
+              <LogInOut />
+            </div>
           </div>
-        </div>
-      </Route>
+        </Route>
 
-      <Route path='/user-home' component={UserHome} />
+        <Route path='/user-home' exact component={UserHome} />
+        <Route component={test404} />
+      </Switch>
     </Router>
   );
 }
