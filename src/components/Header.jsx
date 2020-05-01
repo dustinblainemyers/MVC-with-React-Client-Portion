@@ -11,7 +11,7 @@ function Header() {
         <div class='nav-wrapper light-blue '>
           {/* need get rid of link but keep styling */}
           <a href='#' class='brand-logo center'>
-            Status
+            Active Toggle
           </a>
           {/* <ul id='nav-mobile' class='left hide-on-med-and-down'>
         <li>
