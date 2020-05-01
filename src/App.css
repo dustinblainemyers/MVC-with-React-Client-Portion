@@ -1,187 +1,35 @@
-/* html  {
-  font-size: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-  
-  
-
-  
-}
-
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-
-
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+  background-color: #e8ebf7;
 }
 
-header .img {
-
-  text-align: center;
-}
-
-.login {
-
-  
-  margin: 0 auto;
-  
-
-}
-
-
-.nav{
-
-  
-  list-style:none;
-  margin:0;
-  padding:0;
-  text-align:center;
-}
-.nav li{
-  display:inline-block;
-}
-.nav a{
-  display:inline-block;
-  padding:10px;
-}
-
-.middle .hello {
-  
-  margin-left: 43%;
-}
-
-
-.button {
-  border: solid 1px #000;
-  border-radius: 4px;
-  padding: 8px;
-  text-decoration: none;
-  line-height: 1;
-  
-}
-
-.solid {
-  background-color: #ff0000;
-  color: #FFF;
+.main-container {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  background-color: ;
 }
 
 .hero {
-
-  display:flex;
-  
+  width: 90%;
+  margin: auto;
+  background-color: ;
 }
 
-.background {
-  height: 500px;
-  width: 500px;
-}
-
-.call-to-action {
-
-  display:block;
-  flex-flow: row nowrap;
-  align-items: center;
-  
-  background-size:contain; 
-  height: 394px;
-  width: 768px;
-}
-@media(max-width: 768px) {
-  html {
-      font-size: 16px;
-      box-sizing: border-box;
-      
-  }
-
-  *,
-  *:before,
-  *:after {
-      box-sizing: inherit;
-  }
-
-  header .img {
-
-      text-align: center;
-  }
-  .nav{
-  
-      
-      list-style:none;
-      margin:0;
-      padding:0;
-      text-align:center;
-  }
-  .nav li{
-      display:inline-block;
-  }
-  .nav a{
-      display:inline-block;
-      padding:10px;
-  }
-
-
-  .button {
-      border: solid 1px #000;
-      border-radius: 4px;
-      padding: 8px;
-      text-decoration: none;
-      line-height: 1;
-      
-  }
-
-  .solid {
-      background-color: #ff0000;
-      color: #FFF;
-  }
-
-  .hero {
-
-      display:flex;
-      
-  }
-
-  .call-to-action {
-
-      display:block;
-      flex-flow: row nowrap;
-      align-items: center;
-      background-image: url("/dribble_concept.jpg");
-      background-size:contain; 
-      height: 394px;
-  }
-
-}
-
-h1, h2, h3, p {
-
-  margin: 0 auto;
+.hero-text {
+  position: relative;
   text-align: center;
+  min-height: 300px;
+  background-color: thistle;
 }
 
-
-.container {
-  padding-top: 4%;
-  position:relative;
-  margin:0 auto;
-  max-width: 90vw;
+.hero-image {
+  margin: auto;
+  width: 50%;
 }
 
-
-
-.contained {
-  padding-top: 4%;
-  position:relative;
-  margin:0 auto;
-  max-width: 80%;
-  padding-bottom:30px;
-}
-*/
+/* True false divs to take out once I have light images in place */
 
 .false {
   background-color: #ff0000;
@@ -194,3 +42,18 @@ h1, h2, h3, p {
   width: 20px;
   height: 20px;
 }
+
+@media screen and (max-width: 479px) {
+}
+
+/* below are breakpoints to create, may not need them all */
+/* @media screen and (max-width: 900px) */
+
+/* @media screen and (max-width: 800px) { */
+
+/* @media screen and (max-width: 672px) { */
+
+/* @media screen and (max-width: 600px) { */
+
+/* 
+@media screen and (max-width: 495px) { */

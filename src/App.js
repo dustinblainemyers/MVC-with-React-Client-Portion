@@ -7,6 +7,9 @@ import { useAuth0 } from "./react-auth0-spa";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import "./App.css";
+import logo from "./images/logo.svg";
+
+import { Row, Col, Card, CardTitle, Icon } from "react-materialize";
 
 function App() {
   const { loading } = useAuth0();
@@ -19,13 +22,17 @@ function App() {
     <Router>
       <Switch>
         <Route path='/' exact>
-          <Header />
-
-          <div className='container '>
-            <div className='login '>
-              <LogInOut />
+          <div className='main-container'>
+            <Header />
+            <div className='hero'>
+              <div className='hero-text'></div>
+              <div className='hero-image'>
+                <img src={logo} alt='Active Toggle Logo' />
+              </div>
             </div>
           </div>
+
+          <LogInOut />
         </Route>
 
         <Route path='/user-home' exact component={UserHome} />
