@@ -59,11 +59,6 @@ header {
   background-color: #00ff00;
 }
 
-header:hover,
-header:focus {
-  background-color: #00ff00;
-}
-
 .log-in-out {
   text-align: center;
 }
@@ -160,11 +155,6 @@ header:focus {
     background-color: #00ff00;
   }
 
-  header:hover,
-  header:focus {
-    background-color: #00ff00;
-  }
-
   .log-in-out {
     text-align: center;
   }
@@ -234,11 +224,6 @@ header:focus {
 
   .btn-large:hover,
   .btn-large:focus {
-    background-color: #00ff00;
-  }
-
-  header:hover,
-  header:focus {
     background-color: #00ff00;
   }
 
