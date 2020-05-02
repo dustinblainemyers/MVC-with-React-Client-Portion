@@ -1,29 +1,47 @@
 body {
-  background-color: #e8ebf7;
+  background-color: #f2d398;
 }
 
-.navbar-fixed {
-  width: 600px;
+p,
+h1,
+h2,
+h3 {
+  display: block;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
+
+h1 {
+  font-size: 2.92rem;
+}
+
 .main-container {
-  display: flex;
+  background-color: #f2d398;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   width: 100vw;
   height: 100vh;
-  background-color: ;
+}
+
+header {
+  background-color: #ff0000;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  height: 56px;
+  margin-bottom: 15px;
 }
 
 .hero {
   width: 90%;
   margin: auto;
-  background-color: ;
 }
 
 .hero-text {
-  position: relative;
   text-align: center;
-  min-height: 300px;
+  height: 275px;
   background-color: thistle;
 }
 
@@ -32,6 +50,27 @@ body {
   width: 50%;
 }
 
+.btn-large {
+  background-color: #ff0000;
+}
+
+.btn-large:hover,
+.btn-large:focus {
+  background-color: #00ff00;
+}
+
+header:hover,
+header:focus {
+  background-color: #00ff00;
+}
+
+.log-in-out {
+  text-align: center;
+}
+
+.separate {
+  margin: 15px;
+}
 /* True false divs to take out once I have light images in place */
 
 .false {
@@ -58,5 +97,156 @@ body {
 
 /* @media screen and (max-width: 600px) { */
 
-/* 
-@media screen and (max-width: 495px) { */
+@media screen and (min-width: 500px) {
+  body {
+    background-color: #e8ebf7;
+  }
+
+  p,
+  h1,
+  h2,
+  h3 {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  h1 {
+    font-size: 4.5rem;
+  }
+
+  .main-container {
+    background-color: #f2d398;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  header {
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .hero {
+    width: 90%;
+    margin: auto;
+    background-color: ;
+  }
+
+  .hero-text {
+    text-align: center;
+    height: 50vh;
+    background-color: thistle;
+  }
+
+  .hero-image {
+    margin: auto;
+    width: 30%;
+  }
+
+  .btn-large {
+    background-color: #ff0000;
+  }
+
+  .btn-large:hover,
+  .btn-large:focus {
+    background-color: #00ff00;
+  }
+
+  header:hover,
+  header:focus {
+    background-color: #00ff00;
+  }
+
+  .log-in-out {
+    text-align: center;
+  }
+
+  .separate {
+    margin: 15px;
+  }
+}
+
+@media screen and (min-width: 979px) {
+  body {
+    background-color: #e8ebf7;
+  }
+
+  p,
+  h1,
+  h2,
+  h3 {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  h1 {
+    font-size: 4.5rem;
+  }
+
+  .main-container {
+    background-color: #f2d398;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  header {
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .hero {
+    width: 90%;
+    margin: auto;
+    background-color: ;
+  }
+
+  .hero-text {
+    text-align: center;
+    height: 40vh;
+    background-color: thistle;
+  }
+
+  .hero-image {
+    margin: auto;
+    width: 30%;
+  }
+
+  .btn-large {
+    background-color: #ff0000;
+  }
+
+  .btn-large:hover,
+  .btn-large:focus {
+    background-color: #00ff00;
+  }
+
+  header:hover,
+  header:focus {
+    background-color: #00ff00;
+  }
+
+  .log-in-out {
+    text-align: center;
+  }
+
+  .separate {
+    margin: 15px;
+  }
+}

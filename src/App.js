@@ -22,17 +22,29 @@ function App() {
     <Router>
       <Switch>
         <Route path='/' exact>
-          <Header />
           <div className='main-container'>
+            <header>
+              <h1>Active Toggle</h1>
+            </header>
             <div className='hero'>
-              <div className='hero-text'></div>
               <div className='hero-image'>
                 <img src={logo} alt='Active Toggle Logo' />
               </div>
+              <div className='hero-text'>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+              </div>
             </div>
+            <LogInOut />
           </div>
-
-          <LogInOut />
         </Route>
 
         <Route path='/user-home' exact component={UserHome} />

@@ -35,7 +35,9 @@ const UserHome = () => {
 
   return (
     <>
-      <Header />
+      <header>
+        <h1>Active Toggle</h1>
+      </header>
       {localUser && userdependentComponents}
 
       {!localUser && <p>There was a problem accessing your user data. </p>}

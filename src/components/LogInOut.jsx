@@ -8,10 +8,30 @@ const LogInOut = () => {
   return (
     <>
       {!isAuthenticated && (
-        <button onClick={() => loginWithRedirect({})}>Log in / Sign up</button>
+        <div className='log-in-out'>
+          <button
+            onClick={() => loginWithRedirect({})}
+            className='btn-large waves-effect waves-light separate '
+          >
+            Sign up
+          </button>
+          <button
+            onClick={() => loginWithRedirect({})}
+            className='btn-large waves-effect waves-light  separate'
+          >
+            Log in
+          </button>
+        </div>
       )}
 
-      {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+      {isAuthenticated && (
+        <button
+          onClick={() => logout()}
+          className='btn-large waves-effect waves-light'
+        >
+          Log out
+        </button>
+      )}
     </>
   );
 };

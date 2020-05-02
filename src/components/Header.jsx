@@ -10,9 +10,7 @@ function Header() {
       <nav>
         <div class='nav-wrapper light-blue '>
           {/* need get rid of link but keep styling */}
-          <a href='#' class='brand-logo center'>
-            Active Toggle
-          </a>
+          <h1 class='brand-logo center'>Active Toggle</h1>
           {/* <ul id='nav-mobile' class='left hide-on-med-and-down'>
         <li>
           <a href='sass.html'>Sass</a>
