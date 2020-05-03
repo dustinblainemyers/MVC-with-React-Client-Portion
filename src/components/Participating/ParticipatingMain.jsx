@@ -4,10 +4,11 @@ import { CardPanel, Col, Row } from "react-materialize";
 import jsonFromApi from "../../utils/jsonFromApi";
 import "../../App.css";
 import JsonSort from "../../utils/JsonSort";
+import Config from "../../config";
 
 function ParticipatingMain(props) {
   const { user } = useAuth0();
-
+  const { api } = Config;
   const [presentations, setPresentations] = useState([]);
   const [accessKey, setAccessKey] = useState("");
   const { localUser } = props;
@@ -20,17 +21,16 @@ function ParticipatingMain(props) {
     console.log(`${light_id}light has been toggled`);
     green_light = !green_light;
     console.log("present", presentations);
-    await fetch(
-      `http://localhost:3333/join-presentation/lights/togglelight/${light_id}`,
-      { method: "PUT" }
-    );
+    await fetch(`${api}/join-presentation/lights/togglelight/${light_id}`, {
+      method: "PUT",
+    });
     getUpdate();
   };
 
   const getUpdate = () => {
     jsonFromApi(
       setPresentations,
-      `http://localhost:3333/join-presentation/${user.email}`,
+      `${api}/join-presentation/${user.email}`,
       "id"
     );
   };
@@ -38,20 +38,17 @@ function ParticipatingMain(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const addLightResponse = await fetch(
-      `http://localhost:3333/join-presentation/generate`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          users_id: localUser.id,
-          access_key: accessKey,
-        }),
-      }
-    );
+    const addLightResponse = await fetch(`${api}/join-presentation/generate`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        users_id: localUser.id,
+        access_key: accessKey,
+      }),
+    });
     console.log(addLightResponse);
     // if (addLightResponse.status === 400) {
     //   generateMessage(
@@ -62,19 +59,18 @@ function ParticipatingMain(props) {
     //   generateMessage(`Successfully joined lesson: ${accessKey} `, setMessage);
     // }
 
-    const response = await fetch(
-      `http://localhost:3333/join-presentation/${user.email}`
-    );
+    const response = await fetch(`${api}/join-presentation/${user.email}`);
     const data = await response.json();
 
     data.sort(JsonSort("id"));
     setPresentations(data);
+    setAccessKey("");
   };
 
   const notFound = "You are not an audience member of any presentations.";
 
   const handleDelete = async (users_id, selectedAccessKey) => {
-    await fetch(`http://localhost:3333/join-presentation/delete`, {
+    await fetch(`${api}/join-presentation/delete`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -86,9 +82,7 @@ function ParticipatingMain(props) {
       }),
     });
     console.log(selectedAccessKey);
-    const response = await fetch(
-      `http://localhost:3333/join-presentation/${user.email}`
-    );
+    const response = await fetch(`${api}/join-presentation/${user.email}`);
     const data = await response.json();
 
     data.sort(JsonSort("id"));
@@ -97,7 +91,7 @@ function ParticipatingMain(props) {
 
   return (
     <CardPanel className='white'>
-      <span className='black-text'>Your Presentations</span>
+      <span className='black-text'>Viewing</span>
       <Row>
         <form onSubmit={handleSubmit}>
           <input

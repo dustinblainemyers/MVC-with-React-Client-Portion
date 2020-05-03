@@ -4,6 +4,7 @@ import AllHosting from "./AllHosting";
 import { CardPanel, Col, Row } from "react-materialize";
 import JsonSort from "../../utils/JsonSort";
 import jsonFromApi from "../../utils/jsonFromApi";
+import Config from "../../config";
 
 import "../../App.css";
 
@@ -11,14 +12,11 @@ function TopHostingStack(props) {
   const { user } = useAuth0();
   const { localUser } = props;
   const [presentations, setPresentations] = useState([]);
-  const [presentation_name, setPresentationname] = useState("");
+  const [presentationName, setPresentationName] = useState("");
   const [message, setMessage] = useState(null);
-
+  const { api } = Config;
   useEffect(() => {
-    jsonFromApi(
-      setPresentations,
-      `http://localhost:3333/create-presentation/${user.email}`
-    );
+    jsonFromApi(setPresentations, `${api}/create-presentation/${user.email}`);
   }, [user.email]);
 
   const handleSubmit = async (e) => {
@@ -31,7 +29,7 @@ function TopHostingStack(props) {
     // need to create a function that checks for uniqueness -- right now a uniqe constraint sql side is preventing
     // a non-unique access key from being assigned but I want a new access key to be generated in this case instead of erroring out.
     const createResponse = await fetch(
-      `http://localhost:3333/create-presentation/generate/hello`,
+      `${api}/create-presentation/generate/hello`,
       {
         method: "POST",
         headers: {
@@ -40,7 +38,7 @@ function TopHostingStack(props) {
         },
         body: JSON.stringify({
           user_id: localUser.id,
-          presentation_name: presentation_name,
+          presentationName: presentationName,
           accessKey: accessKey,
         }),
       }
@@ -55,17 +53,16 @@ function TopHostingStack(props) {
       );
     }
 
-    const response = await fetch(
-      `http://localhost:3333/create-presentation/${user.email}`
-    );
+    const response = await fetch(`${api}/create-presentation/${user.email}`);
     const data = await response.json();
 
     data.sort(JsonSort("id"));
     setPresentations(data);
+    setPresentationName("");
   };
 
   const handleDelete = async (lesson_id) => {
-    await fetch(`http://localhost:3333/create-presentation/delete`, {
+    await fetch(`${api}/create-presentation/delete`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -76,9 +73,7 @@ function TopHostingStack(props) {
       }),
     });
     console.log(lesson_id);
-    const response = await fetch(
-      `http://localhost:3333/create-presentation/${user.email}`
-    );
+    const response = await fetch(`${api}/create-presentation/${user.email}`);
     const data = await response.json();
 
     data.sort(JsonSort("id"));
@@ -109,14 +104,14 @@ function TopHostingStack(props) {
   return (
     <>
       <CardPanel className='white'>
-        <span className='black-text'>Your Presentations</span>
+        <span className='black-text'>Hosting</span>
         <Row>
           <form onSubmit={handleSubmit}>
             <input
               type='text'
-              name='presentation_name'
-              value={presentation_name}
-              onChange={(e) => setPresentationname(e.target.value)}
+              name='presentationName'
+              value={presentationName}
+              onChange={(e) => setPresentationName(e.target.value)}
             />
 
             <input type='submit' value='Submit' />

@@ -18,6 +18,7 @@ function AllHosting(props) {
               lesson_name={presentation.lesson_name}
               id={presentation.id}
               handleDelete={props.handleDelete}
+              test={presentation.access_key}
             />
           </>
         ))
