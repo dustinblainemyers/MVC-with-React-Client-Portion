@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CardPanel, Col, Row } from "react-materialize";
-// import socketIOClient from "socket.io-client";
+import socketIOClient from "socket.io-client";
 
 class Aggregate extends Component {
   constructor() {
@@ -11,32 +11,29 @@ class Aggregate extends Component {
       aggregateLight: "",
       Green: true,
     };
+    this.socket = "";
   }
 
-  //   updateLight = data  => {
-  //     this.setState(prevState => ({
-  //       response: [...prevState.response, data],
+  updateLight = (data) => {
+    if (data === "Red") {
+      this.setState({ Green: false });
+    } else {
+      this.setState({ Green: true });
+    }
+  };
 
-  //      }))
-  //   }
+  componentDidMount() {
+    this.socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
+    console.log("test prop", this.props.test);
 
-  //   componentDidMount() {
-  //     const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
+    this.socket.on("FromAPI", (data) => this.updateLight(data));
+  }
 
-  //     socket.on("FromAPI", this.updateLight)
-  //    }
-
-  //    componentWillUnmount() {
-  //     const socket = socketIOClient(`127.0.0.1:4001?token=${this.props.test}`);
-  //     socket.off('FromAPI', this.updateLight);
-  //  }
+  componentWillUnmount() {
+    this.socket.close();
+  }
 
   render() {
-    const { response } = this.state;
-
-    if (response === "Red") {
-      this.setState({ Green: false });
-    }
     return (
       <Col m={100} s={100} l={100}>
         <CardPanel className='white'>
