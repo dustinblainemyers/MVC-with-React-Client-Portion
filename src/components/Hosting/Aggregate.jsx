@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { CardPanel, Col, Row } from "react-materialize";
 import socketIOClient from "socket.io-client";
+import Config from "../../config";
 
 class Aggregate extends Component {
   constructor() {
@@ -12,6 +13,7 @@ class Aggregate extends Component {
       Green: true,
     };
     this.socket = "";
+    this.config = Config;
   }
 
   updateLight = (data) => {
@@ -23,7 +25,7 @@ class Aggregate extends Component {
   };
 
   componentDidMount() {
-    this.socket = socketIOClient(`${api}?token=${this.props.test}`);
+    this.socket = socketIOClient(`${this.config.api}?token=${this.props.test}`);
     console.log("test prop", this.props.test);
 
     this.socket.on("FromAPI", (data) => this.updateLight(data));
