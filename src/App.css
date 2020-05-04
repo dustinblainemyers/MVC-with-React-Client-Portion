@@ -34,6 +34,13 @@ header {
   margin-bottom: 15px;
 }
 
+.lesson-container {
+  background-color: #f2d398;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100vw;
+}
+
 .hero {
   width: 90%;
   margin: auto;

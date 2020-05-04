@@ -15,17 +15,41 @@ const UserHome = () => {
   const { user } = useAuth0();
   const { api } = Config;
   const [localUser, setLocalUser] = useState(null);
+  const [hosting, setHosting] = useState(false);
+  const [viewing, setViewing] = useState(false);
 
   const userdependentComponents = (
-    <Row>
-      <Col className='yellow'>
-        <CreatePresentation localUser={localUser} />
-      </Col>
+    <>
+      <button
+        onClick={() => {
+          setViewing(false);
+          setHosting(true);
+        }}
+      >
+        Host
+      </button>
+      <button
+        onClick={() => {
+          setViewing(true);
+          setHosting(false);
+        }}
+      >
+        view
+      </button>
+      <Row>
+        {hosting && (
+          <div className='lesson-container'>
+            <CreatePresentation localUser={localUser} className='hero' />
+          </div>
+        )}
 
-      <Col>
-        <ParticipatingMain localUser={localUser} />
-      </Col>
-    </Row>
+        {viewing && (
+          <div className='lesson-container'>
+            <ParticipatingMain localUser={localUser} />
+          </div>
+        )}
+      </Row>
+    </>
   );
 
   useEffect(() => {
