@@ -18,11 +18,11 @@ h1 {
 }
 
 .main-container {
-  background-color: #f2d398;
+  background-color: white;
   max-width: 1200px;
   margin: 0 auto;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 }
 
 header {
@@ -47,9 +47,11 @@ header {
 }
 
 .hero-text {
+  margin-top: 45px;
   text-align: center;
   height: 275px;
-  background-color: thistle;
+  background-color: white;
+  line-height: 2rem;
 }
 
 .hero-image {
@@ -87,23 +89,7 @@ header {
   height: 20px;
 }
 
-@media screen and (max-width: 479px) {
-}
-
-/* below are breakpoints to create, may not need them all */
-/* @media screen and (max-width: 900px) */
-
-/* @media screen and (max-width: 800px) { */
-
-/* @media screen and (max-width: 672px) { */
-
-/* @media screen and (max-width: 600px) { */
-
 @media screen and (min-width: 500px) {
-  body {
-    background-color: #e8ebf7;
-  }
-
   p,
   h1,
   h2,
@@ -119,51 +105,17 @@ header {
     font-size: 4.5rem;
   }
 
-  .main-container {
-    background-color: #f2d398;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100vw;
-    height: 100vh;
-  }
-
   header {
-    background-color: #ff0000;
-    color: white;
-    text-align: center;
-    text-transform: uppercase;
     height: 70px;
     margin-bottom: 15px;
   }
 
-  .hero {
-    width: 90%;
-    margin: auto;
-    background-color: ;
-  }
-
   .hero-text {
-    text-align: center;
     height: 50vh;
-    background-color: thistle;
   }
 
   .hero-image {
-    margin: auto;
     width: 30%;
-  }
-
-  .btn-large {
-    background-color: #ff0000;
-  }
-
-  .btn-large:hover,
-  .btn-large:focus {
-    background-color: #00ff00;
-  }
-
-  .log-in-out {
-    text-align: center;
   }
 
   .separate {
@@ -172,70 +124,23 @@ header {
 }
 
 @media screen and (min-width: 979px) {
-  body {
-    background-color: #e8ebf7;
-  }
-
-  p,
-  h1,
-  h2,
-  h3 {
-    display: block;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-  }
-
   h1 {
     font-size: 4.5rem;
   }
 
-  .main-container {
-    background-color: #f2d398;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100vw;
-    height: 100vh;
-  }
-
   header {
-    background-color: #ff0000;
-    color: white;
-    text-align: center;
-    text-transform: uppercase;
     height: 70px;
     margin-bottom: 15px;
-  }
-
-  .hero {
-    width: 90%;
-    margin: auto;
-    background-color: ;
   }
 
   .hero-text {
     text-align: center;
     height: 40vh;
-    background-color: thistle;
   }
 
   .hero-image {
     margin: auto;
     width: 30%;
-  }
-
-  .btn-large {
-    background-color: #ff0000;
-  }
-
-  .btn-large:hover,
-  .btn-large:focus {
-    background-color: #00ff00;
-  }
-
-  .log-in-out {
-    text-align: center;
   }
 
   .separate {

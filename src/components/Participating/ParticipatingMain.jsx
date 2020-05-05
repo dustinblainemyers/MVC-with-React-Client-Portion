@@ -90,57 +90,43 @@ function ParticipatingMain(props) {
   };
 
   return (
-    <CardPanel className='white'>
-      <span className='black-text'>Viewing</span>
-      <Row>
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            name='accessKey'
-            value={accessKey}
-            onChange={(e) => setAccessKey(e.target.value)}
-          />
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          type='text'
+          name='accessKey'
+          value={accessKey}
+          onChange={(e) => setAccessKey(e.target.value)}
+        />
 
-          <input type='submit' value='Submit' />
-        </form>
-        {presentations.length > 0 ? (
-          presentations.map((presentation, i) => (
-            <>
-              <Col m={100} s={100} l={100}>
-                <CardPanel
-                  className='white'
-                  key={presentation.access_key + i + 1000}
-                >
-                  <span className='black-text '>
-                    {presentation.lesson_name} {presentation.green_light}{" "}
-                    {presentation.access_key}
-                  </span>
-                  <div
-                    className={presentation.green_light + ""}
-                    onClick={() =>
-                      toggleLight(
-                        presentation.access_key,
-                        i,
-                        presentation.green_light
-                      )
-                    }
-                  ></div>
-                  <button
-                    onClick={() =>
-                      handleDelete(localUser.id, presentation.access_key)
-                    }
-                  >
-                    Delete
-                  </button>
-                </CardPanel>
-              </Col>
-            </>
-          ))
-        ) : (
-          <p>{notFound}</p>
-        )}
-      </Row>
-    </CardPanel>
+        <input type='submit' value='Submit' />
+      </form>
+      {presentations.length > 0 ? (
+        presentations.map((presentation, i) => (
+          <>
+            <span className='black-text '>
+              {presentation.lesson_name} {presentation.green_light}{" "}
+              {presentation.access_key}
+            </span>
+            <div
+              className={presentation.green_light + ""}
+              onClick={() =>
+                toggleLight(presentation.id, i, presentation.green_light)
+              }
+            ></div>
+            <button
+              onClick={() =>
+                handleDelete(localUser.id, presentation.access_key)
+              }
+            >
+              Delete
+            </button>
+          </>
+        ))
+      ) : (
+        <p>{notFound}</p>
+      )}
+    </>
   );
 }
 

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import LogInOut from "./LogInOut";
-import getWithAwait from "../utils/getWithAwait";
+
 import jsonFromApi from "../utils/jsonFromApi";
-import Header from "./Header";
 
 import CreatePresentation from "./Hosting/CreatePresentation";
 
 import ParticipatingMain from "./Participating/ParticipatingMain";
-import { Row, Col } from "react-materialize";
+
 import Config from "../config";
 
 const UserHome = () => {
-  const { user } = useAuth0();
+  const { user, logout } = useAuth0();
   const { api } = Config;
   const [localUser, setLocalUser] = useState(null);
   const [hosting, setHosting] = useState(false);
@@ -20,7 +19,18 @@ const UserHome = () => {
 
   const userdependentComponents = (
     <>
+      <div>
+        <span> Welcome ! {user.email}</span>{" "}
+        <button
+          onClick={() => logout()}
+          className='btn-large waves-effect waves-light'
+        >
+          Log out
+        </button>
+      </div>
+
       <button
+        className='btn-large waves-effect waves-light separate'
         onClick={() => {
           setViewing(false);
           setHosting(true);
@@ -29,6 +39,7 @@ const UserHome = () => {
         Host
       </button>
       <button
+        className='btn-large waves-effect waves-light separate'
         onClick={() => {
           setViewing(true);
           setHosting(false);
@@ -36,19 +47,16 @@ const UserHome = () => {
       >
         view
       </button>
-      <Row>
-        {hosting && (
-          <div className='lesson-container'>
-            <CreatePresentation localUser={localUser} className='hero' />
-          </div>
-        )}
-
-        {viewing && (
-          <div className='lesson-container'>
-            <ParticipatingMain localUser={localUser} />
-          </div>
-        )}
-      </Row>
+      {hosting && (
+        <div className='lesson-container'>
+          <CreatePresentation localUser={localUser} className='hero' />
+        </div>
+      )}
+      {viewing && (
+        <div className='lesson-container'>
+          <ParticipatingMain localUser={localUser} />
+        </div>
+      )}
     </>
   );
 

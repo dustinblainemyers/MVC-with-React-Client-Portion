@@ -17,6 +17,7 @@ class Aggregate extends Component {
   }
 
   updateLight = (data) => {
+    console.log(this.props.test, "is updating");
     if (data === "Red") {
       this.setState({ Green: false });
     } else {
