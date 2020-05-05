@@ -7,7 +7,7 @@ import jsonFromApi from "../utils/jsonFromApi";
 import CreatePresentation from "./Hosting/CreatePresentation";
 
 import ParticipatingMain from "./Participating/ParticipatingMain";
-
+import { CardPanel, Col, Row } from "react-materialize";
 import Config from "../config";
 
 const UserHome = () => {
@@ -52,11 +52,7 @@ const UserHome = () => {
           <CreatePresentation localUser={localUser} className='hero' />
         </div>
       )}
-      {viewing && (
-        <div className='lesson-container'>
-          <ParticipatingMain localUser={localUser} />
-        </div>
-      )}
+      {viewing && <ParticipatingMain localUser={localUser} />}
     </>
   );
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
-import { CardPanel, Col, Row } from "react-materialize";
+import { CardPanel, Col, Row, Switch } from "react-materialize";
 import jsonFromApi from "../../utils/jsonFromApi";
 import "../../App.css";
 import JsonSort from "../../utils/JsonSort";
@@ -91,36 +91,46 @@ function ParticipatingMain(props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          name='accessKey'
-          value={accessKey}
-          onChange={(e) => setAccessKey(e.target.value)}
-        />
+      <Col>
+        {" "}
+        <form onSubmit={handleSubmit}>
+          <input
+            type='text'
+            name='accessKey'
+            value={accessKey}
+            onChange={(e) => setAccessKey(e.target.value)}
+          />
 
-        <input type='submit' value='Submit' />
-      </form>
+          <input type='submit' value='Submit' />
+        </form>
+      </Col>
+
       {presentations.length > 0 ? (
         presentations.map((presentation, i) => (
           <>
-            <span className='black-text '>
-              {presentation.lesson_name} {presentation.green_light}{" "}
-              {presentation.access_key}
-            </span>
-            <div
-              className={presentation.green_light + ""}
-              onClick={() =>
-                toggleLight(presentation.id, i, presentation.green_light)
-              }
-            ></div>
-            <button
-              onClick={() =>
-                handleDelete(localUser.id, presentation.access_key)
-              }
-            >
-              Delete
-            </button>
+            <Col>
+              <span className='black-text '>
+                {presentation.lesson_name} {presentation.green_light}{" "}
+                {presentation.access_key}
+              </span>
+              <div className={presentation.green_light + ""}>
+                <Switch
+                  id='Switch-11'
+                  offLabel='Red'
+                  onChange={() =>
+                    toggleLight(presentation.id, i, presentation.green_light)
+                  }
+                  onLabel='Green'
+                />
+              </div>
+              <button
+                onClick={() =>
+                  handleDelete(localUser.id, presentation.access_key)
+                }
+              >
+                Delete
+              </button>
+            </Col>
           </>
         ))
       ) : (
