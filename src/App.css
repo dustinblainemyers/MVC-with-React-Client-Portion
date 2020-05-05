@@ -50,13 +50,28 @@ header {
   line-height: 2rem;
 }
 
+.create-join-instruct {
+  background-color: white;
+}
+
 .hero-image {
   margin: auto;
   width: 50%;
 }
 
-.btn-large {
+.btn-large,
+.btn-small {
   background-color: #ff0000;
+}
+
+.btn-small {
+  background-color: grey;
+  border-radius: 1px;
+}
+
+.btn-small:hover,
+.btn-small:focus {
+  background-color: tan;
 }
 
 .btn-large:hover,
@@ -85,11 +100,16 @@ header {
   height: 20px;
 }
 
+.logout-header {
+  margin-left: 75%;
+}
+
 @media screen and (min-width: 500px) {
   p,
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     display: block;
     margin-block-start: 0px;
     margin-block-end: 0px;
@@ -104,14 +124,6 @@ header {
   header {
     height: 70px;
     margin-bottom: 15px;
-  }
-
-  .hero-text {
-    height: 50vh;
-  }
-
-  .hero-image {
-    width: 30%;
   }
 
   .separate {

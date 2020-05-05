@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
-import { CardPanel, Col, Row, Switch } from "react-materialize";
+import {
+  CardPanel,
+  Col,
+  Row,
+  Switch,
+  TextInput,
+  Card,
+  Icon,
+  CardTitle,
+} from "react-materialize";
 import jsonFromApi from "../../utils/jsonFromApi";
 import "../../App.css";
 import JsonSort from "../../utils/JsonSort";
 import Config from "../../config";
+import green_light from "../../images/green_light.svg";
+import red_light from "../../images/red_light.svg";
 
 function ParticipatingMain(props) {
   const { user } = useAuth0();
@@ -91,51 +102,103 @@ function ParticipatingMain(props) {
 
   return (
     <>
-      <Col>
-        {" "}
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            name='accessKey'
-            value={accessKey}
-            onChange={(e) => setAccessKey(e.target.value)}
-          />
+      <Row>
+        <Col m={6} s={12} l={12}>
+          <div className='hero'>
+            <div className='create-join-instruct'>
+              {" "}
+              <p>
+                To join a lesson, enter the lesson access key provided by your
+                instructor below. Simply toggle your light to red to anonymously
+                signal to your instructor that some part of the instruction
+                needs to be modified.
+              </p>
+            </div>
+          </div>{" "}
+          <form onSubmit={handleSubmit}>
+            <TextInput
+              label='Access Key'
+              type='text'
+              name='accessKey'
+              value={accessKey}
+              onChange={(e) => setAccessKey(e.target.value)}
+            />
 
-          <input type='submit' value='Submit' />
-        </form>
-      </Col>
+            <input type='submit' value='Submit' />
+          </form>
+        </Col>
+      </Row>
 
-      {presentations.length > 0 ? (
-        presentations.map((presentation, i) => (
-          <>
+      <CardPanel>
+        <Row>
+          {presentations.length > 0 ? (
+            presentations.map((presentation, i) => (
+              <>
+                <Col m={100} s={100} l={100}>
+                  <CardPanel>
+                    <span className='black-text '>
+                      {presentation.lesson_name} {presentation.green_light}{" "}
+                    </span>
+
+                    {presentation.green_light && (
+                      <img
+                        src={green_light}
+                        alt='Light is green'
+                        key={presentation.id}
+                        // onClick={() =>
+                        //   toggleLight(
+                        //     presentation.id,
+                        //     i,
+                        //     presentation.green_light
+                        //   )
+                        // }
+                      />
+                    )}
+                    {!presentation.green_light && (
+                      <img
+                        src={red_light}
+                        alt='Light is green'
+                        key={presentation.id}
+                        // onClick={() =>
+                        //   toggleLight(
+                        //     presentation.id,
+
+                        //     presentation.green_light
+                        //   )
+                        // }
+                      />
+                    )}
+                    <Switch
+                      id={presentation.id}
+                      offLabel='Green'
+                      onChange={() =>
+                        toggleLight(
+                          presentation.id,
+
+                          presentation.green_light
+                        )
+                      }
+                      onLabel='Red'
+                    />
+                    <br />
+                    <button
+                      onClick={() =>
+                        handleDelete(localUser.id, presentation.access_key)
+                      }
+                    >
+                      Delete
+                    </button>
+                  </CardPanel>
+                </Col>
+              </>
+            ))
+          ) : (
             <Col>
-              <span className='black-text '>
-                {presentation.lesson_name} {presentation.green_light}{" "}
-                {presentation.access_key}
-              </span>
-              <div className={presentation.green_light + ""}>
-                <Switch
-                  id='Switch-11'
-                  offLabel='Red'
-                  onChange={() =>
-                    toggleLight(presentation.id, i, presentation.green_light)
-                  }
-                  onLabel='Green'
-                />
-              </div>
-              <button
-                onClick={() =>
-                  handleDelete(localUser.id, presentation.access_key)
-                }
-              >
-                Delete
-              </button>
+              <p>{notFound}</p>
             </Col>
-          </>
-        ))
-      ) : (
-        <p>{notFound}</p>
-      )}
+          )}
+        </Row>
+      </CardPanel>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import AllHosting from "./AllHosting";
-import { CardPanel, Col, Row } from "react-materialize";
+import { CardPanel, Col, Row, TextInput } from "react-materialize";
 import JsonSort from "../../utils/JsonSort";
 import jsonFromApi from "../../utils/jsonFromApi";
 import Config from "../../config";
@@ -103,26 +103,38 @@ function TopHostingStack(props) {
 
   return (
     <>
-      <CardPanel className='white'>
-        <span className='black-text'>Hosting</span>
-        <Row>
-          <form onSubmit={handleSubmit}>
-            <input
-              type='text'
-              name='presentationName'
-              value={presentationName}
-              onChange={(e) => setPresentationName(e.target.value)}
-            />
-
-            <input type='submit' value='Submit' />
-          </form>
-          {message}
-          <AllHosting
-            presentations={presentations}
-            handleDelete={handleDelete.bind(this)}
+      <Row>
+        <div className='hero'>
+          <div className='create-join-instruct'>
+            {" "}
+            <p>
+              To create a lesson simply enter the name of your presentation
+              below. You will be provided with an access key you can share with
+              your students. Your light will turn red if over 50% of your
+              students signify that some part of the instruction needs to be
+              modified or explained.
+            </p>
+          </div>
+        </div>{" "}
+        <form onSubmit={handleSubmit}>
+          <TextInput
+            error='That is not a valid access key'
+            success='Topic added to your viewing list'
+            label='Presentation Name'
+            type='text'
+            name='presentationName'
+            value={presentationName}
+            onChange={(e) => setPresentationName(e.target.value)}
           />
-        </Row>
-      </CardPanel>
+
+          <input type='submit' value='Submit' />
+        </form>
+        {message}
+      </Row>
+      <AllHosting
+        presentations={presentations}
+        handleDelete={handleDelete.bind(this)}
+      />
     </>
   );
 }

@@ -31,15 +31,16 @@ function App() {
                 <img src={logo} alt='Active Toggle Logo' />
               </div>
               <div className='hero-text'>
+                <p className='hero-header'>
+                  Active Toggle gives students the ability to give real time and
+                  anonymous group feedback about the pace or content of a
+                  lesson.
+                </p>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  Create a lesson today. You will get a light that simply turns
+                  red or green in response to student feedback. Students can
+                  take comfort that their individual responses will not be
+                  revealed.
                 </p>
               </div>
             </div>

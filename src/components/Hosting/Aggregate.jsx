@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { CardPanel, Col, Row } from "react-materialize";
 import socketIOClient from "socket.io-client";
 import Config from "../../config";
+import green_light from "../../images/green_light.svg";
+import red_light from "../../images/red_light.svg";
 
 class Aggregate extends Component {
   constructor() {
@@ -42,9 +44,10 @@ class Aggregate extends Component {
       <Col m={100} s={100} l={100}>
         <CardPanel className='white'>
           <span className='black-text '>{this.props.lesson_name}</span>
-          <div className={this.state.Green + ""}></div>
+          {this.state.Green && <img src={green_light} alt='Light is green' />}
+          {!this.state.Green && <img src={red_light} alt='Light is green' />}
           <button onClick={() => this.props.handleDelete(this.props.id)}>
-            Delete
+            Delete Lesson
           </button>
         </CardPanel>
       </Col>

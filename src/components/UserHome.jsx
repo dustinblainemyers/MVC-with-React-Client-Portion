@@ -7,7 +7,7 @@ import jsonFromApi from "../utils/jsonFromApi";
 import CreatePresentation from "./Hosting/CreatePresentation";
 
 import ParticipatingMain from "./Participating/ParticipatingMain";
-import { CardPanel, Col, Row } from "react-materialize";
+import { CardPanel, Col, Row, Chip, Icon } from "react-materialize";
 import Config from "../config";
 
 const UserHome = () => {
@@ -16,24 +16,34 @@ const UserHome = () => {
   const [localUser, setLocalUser] = useState(null);
   const [hosting, setHosting] = useState(false);
   const [viewing, setViewing] = useState(false);
+  const [instructions, setInstructions] = useState(true);
 
   const userdependentComponents = (
     <>
-      <div>
-        <span> Welcome ! {user.email}</span>{" "}
-        <button
-          onClick={() => logout()}
-          className='btn-large waves-effect waves-light'
-        >
-          Log out
-        </button>
-      </div>
+      <Row>
+        <div className='logout-header'>
+          <Chip
+            close={false}
+            closeIcon={<Icon className='close'>close</Icon>}
+            options={null}
+          >
+            Logged in as: {user.email} <br></br>
+            <button
+              onClick={() => logout()}
+              className='btn-small waves-effect waves-light'
+            >
+              Log out
+            </button>
+          </Chip>
+        </div>
+      </Row>
 
       <button
         className='btn-large waves-effect waves-light separate'
         onClick={() => {
           setViewing(false);
           setHosting(true);
+          setInstructions(false);
         }}
       >
         Host
@@ -43,16 +53,28 @@ const UserHome = () => {
         onClick={() => {
           setViewing(true);
           setHosting(false);
+          setInstructions(false);
         }}
       >
         view
       </button>
-      {hosting && (
-        <div className='lesson-container'>
+      <Row>
+        {instructions && (
+          <div className='hero'>
+            <div className='hero-text'>
+              {" "}
+              <p>
+                To get started select "Host" or "View" above according to your
+                role
+              </p>
+            </div>
+          </div>
+        )}
+        {hosting && (
           <CreatePresentation localUser={localUser} className='hero' />
-        </div>
-      )}
-      {viewing && <ParticipatingMain localUser={localUser} />}
+        )}
+        {viewing && <ParticipatingMain localUser={localUser} />}
+      </Row>
     </>
   );
 
@@ -68,7 +90,7 @@ const UserHome = () => {
       </header>
       {localUser && userdependentComponents}
 
-      {!localUser && <p>There was a problem accessing your user data. </p>}
+      {!localUser && <p> </p>}
     </>
   );
 };
