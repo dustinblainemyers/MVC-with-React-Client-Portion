@@ -26,7 +26,12 @@ const LogInOut = () => {
 
       {isAuthenticated && (
         <button
-          onClick={() => logout()}
+          onClick={() =>
+            logout({
+              returnTo: "https://confident-dijkstra-00b2fe.netlify.app/",
+              clientId: "n1XzxKd8D2RMbP6bIFbmrUec3ADiRwq0",
+            })
+          }
           className='btn-large waves-effect waves-light'
         >
           Log out
