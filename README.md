@@ -1,68 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Active Toggle
 
-## Available Scripts
+**Active Toggle** is a web application that allows for anonymous, simple feedback.
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Imagine for a moment you are in a classroom setting. The teacher is going over a powerpoint presentation. You are reading the slides and hearing what the teacher is saying, but you are not sure you exactly understand it. You would voice your concerns out loud but then again you did just get back from the restroom and you forgot to do the reading last night. The instructor is going pretty fast, is this just a quick gloss over of information you are already expected to know , or is everyone else in the same boat ?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The Old Way
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+You raise your hand. "Urmm, I'm not sure if you mentioned this but", you say mutter out as you squirm in your seat. You had spent the last thirty minutes skimming over the required reading hoping to catch any clarification on the question you are about to ask. You probably missed a lot of the lecture while you were skimming the notes and are now even further behind. As you finish the question , another student pipes up "Yeah , I am not really getting that either. More students join in and it becomes evident that the instructor will have to start back at slide one .
 
-### `npm test`
+### The New Way
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Active Toggle To The Rescue
 
-### `npm run build`
+You open up **Active Toggle** and click on the "viewing" tab. You find the lesson you are currently in and you toggle your light to red. Nothing happens as a result of your individual light going into the red state, but more lights are silently and anonymously turning red in the classroom. After only two minutes of instruction, the instructors phone dings. Over 50% of the students have toggled their light red, so now hers is red as well. Apparently , I am moving too fast she announces to the class. Let's back up for a minute, it appears that I am leaving behind the majority of the class. The class ends on time and everyone leaves with a better understanding of the lecture topic " Electronic Payment Systems " .
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### A brighter future
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Your name in this scenario ? Elon Musk . You leverage your knowledge of Electronic Payment Systems gained that day to establish a service now known as PayPal . You are now a billionaire and can now spend a significant amount of time saying ridiculous things on Twitter rather then worrying about bills. All made possible by **Active Toggle**
