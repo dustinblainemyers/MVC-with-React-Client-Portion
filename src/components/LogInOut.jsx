@@ -7,7 +7,7 @@ const LogInOut = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const logoutWithRedirect = () =>
     logout({
-      returnTo: window.location.origin,
+      return_to: "https://confident-dijkstra-00b2fe.netlify.app",
     });
 
   return (
