@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 const LogInOut = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -29,7 +30,6 @@ const LogInOut = () => {
           onClick={() =>
             logout({
               returnTo: "https://confident-dijkstra-00b2fe.netlify.app/",
-              clientId: "n1XzxKd8D2RMbP6bIFbmrUec3ADiRwq0",
             })
           }
           className='btn-large waves-effect waves-light'
