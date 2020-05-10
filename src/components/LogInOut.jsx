@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 
 const LogInOut = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const logoutWithRedirect = () =>
+    logout({
+      returnTo: window.location.origin,
+    });
 
   return (
     <>
@@ -27,11 +31,7 @@ const LogInOut = () => {
 
       {isAuthenticated && (
         <button
-          onClick={() =>
-            logout({
-              returnTo: window.location.origin,
-            })
-          }
+          onClick={() => logoutWithRedirect()}
           className='btn-large waves-effect waves-light'
         >
           Log out
