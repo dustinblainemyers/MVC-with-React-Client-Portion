@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import "./App.css";
 import logo from "./images/logo.svg";
+import history from "./utils/history";
 
 import { Row, Col, Card, CardTitle, Icon } from "react-materialize";
 
@@ -19,7 +20,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route path='/' exact>
           <div className='main-container'>
