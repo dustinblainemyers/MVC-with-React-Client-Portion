@@ -29,7 +29,7 @@ const LogInOut = () => {
         <button
           onClick={() =>
             logout({
-              returnTo: "https://confident-dijkstra-00b2fe.netlify.app/",
+              returnTo: window.location.origin,
             })
           }
           className='btn-large waves-effect waves-light'
