@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
-
+import config from "./config";
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
@@ -16,6 +16,7 @@ export const Auth0Provider = ({
   const [auth0Client, setAuth0] = useState();
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
+  const { production, dev } = config;
 
   useEffect(() => {
     const initAuth0 = async () => {
@@ -80,7 +81,15 @@ export const Auth0Provider = ({
         loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
-        logout: (...p) => auth0Client.logout(...p),
+        logout: (...p) => {
+          console.log(...p);
+          auth0Client.logout({
+            returnTo:
+              (production && "https://confident-dijkstra-00b2fe.netlify.app") ||
+              (dev && "http://localhost:3000"),
+            clientID: "n1XzxKd8D2RMbP6bIFbmrUec3ADiRwq0",
+          });
+        },
       }}
     >
       {children}
