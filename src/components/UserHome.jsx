@@ -20,23 +20,15 @@ const UserHome = () => {
 
   const userdependentComponents = (
     <>
-      <Row>
-        <div className='logout-header'>
-          <Chip
-            close={false}
-            closeIcon={<Icon className='close'>close</Icon>}
-            options={null}
-          >
-            Logged in as: {user.email} <br></br>
-            <button
-              onClick={() => logout()}
-              className='btn-small waves-effect waves-light'
-            >
-              Log out
-            </button>
-          </Chip>
-        </div>
-      </Row>
+      <div className='logout-header'>
+        Logged in as: {user.email}
+        <button
+          onClick={() => logout()}
+          className='btn-small waves-effect waves-light'
+        >
+          Log out
+        </button>
+      </div>
 
       <button
         className='btn-large waves-effect waves-light separate'
