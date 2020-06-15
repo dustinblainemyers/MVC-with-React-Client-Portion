@@ -41,9 +41,9 @@ class Aggregate extends Component {
 
   render() {
     return (
-      <Col m={100} s={100} l={100}>
+      <Col>
         <CardPanel className='white'>
-          <span className='black-text '>{this.props.lesson_name}</span>
+          <div className='card-text'>{this.props.lesson_name}</div>
           {this.state.Green && <img src={green_light} alt='Light is green' />}
           {!this.state.Green && <img src={red_light} alt='Light is green' />}
           <button onClick={() => this.props.handleDelete(this.props.id)}>

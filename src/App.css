@@ -21,6 +21,11 @@ h1 {
   height: 90vh;
 }
 
+.col .card-panel {
+  width: 200px;
+  height: 300px;
+}
+
 header {
   background-color: #ff0000;
   color: white;

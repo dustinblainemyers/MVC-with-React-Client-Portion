@@ -103,7 +103,7 @@ function ParticipatingMain(props) {
   return (
     <>
       <Row>
-        <Col m={6} s={12} l={12}>
+        <Col>
           <div className='hero'>
             <div className='create-join-instruct'>
               {" "}
@@ -134,11 +134,11 @@ function ParticipatingMain(props) {
           {presentations.length > 0 ? (
             presentations.map((presentation, i) => (
               <>
-                <Col m={100} s={100} l={100}>
+                <Col>
                   <CardPanel>
-                    <span className='black-text '>
+                    <div className='card-text '>
                       {presentation.lesson_name} {presentation.green_light}{" "}
-                    </span>
+                    </div>
 
                     {presentation.green_light && (
                       <img
