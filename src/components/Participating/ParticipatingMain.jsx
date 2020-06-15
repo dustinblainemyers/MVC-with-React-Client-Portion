@@ -129,76 +129,74 @@ function ParticipatingMain(props) {
         </Col>
       </Row>
 
-      <CardPanel>
-        <Row>
-          {presentations.length > 0 ? (
-            presentations.map((presentation, i) => (
-              <>
-                <Col>
-                  <CardPanel>
-                    <div className='card-text '>
-                      {presentation.lesson_name} {presentation.green_light}{" "}
-                    </div>
+      <Row>
+        {presentations.length > 0 ? (
+          presentations.map((presentation, i) => (
+            <>
+              <Col>
+                <CardPanel>
+                  <div className='card-text '>
+                    {presentation.lesson_name} {presentation.green_light}{" "}
+                  </div>
 
-                    {presentation.green_light && (
-                      <img
-                        src={green_light}
-                        alt='Light is green'
-                        key={presentation.id}
-                        // onClick={() =>
-                        //   toggleLight(
-                        //     presentation.id,
-                        //     i,
-                        //     presentation.green_light
-                        //   )
-                        // }
-                      />
-                    )}
-                    {!presentation.green_light && (
-                      <img
-                        src={red_light}
-                        alt='Light is green'
-                        key={presentation.id}
-                        // onClick={() =>
-                        //   toggleLight(
-                        //     presentation.id,
-
-                        //     presentation.green_light
-                        //   )
-                        // }
-                      />
-                    )}
-                    <Switch
-                      id={presentation.id}
-                      offLabel='Green'
-                      onChange={() =>
-                        toggleLight(
-                          presentation.id,
-
-                          presentation.green_light
-                        )
-                      }
-                      onLabel='Red'
+                  {presentation.green_light && (
+                    <img
+                      src={green_light}
+                      alt='Light is green'
+                      key={presentation.id}
+                      // onClick={() =>
+                      //   toggleLight(
+                      //     presentation.id,
+                      //     i,
+                      //     presentation.green_light
+                      //   )
+                      // }
                     />
-                    <br />
-                    <button
-                      onClick={() =>
-                        handleDelete(localUser.id, presentation.access_key)
-                      }
-                    >
-                      Delete
-                    </button>
-                  </CardPanel>
-                </Col>
-              </>
-            ))
-          ) : (
-            <Col>
-              <p>{notFound}</p>
-            </Col>
-          )}
-        </Row>
-      </CardPanel>
+                  )}
+                  {!presentation.green_light && (
+                    <img
+                      src={red_light}
+                      alt='Light is green'
+                      key={presentation.id}
+                      // onClick={() =>
+                      //   toggleLight(
+                      //     presentation.id,
+
+                      //     presentation.green_light
+                      //   )
+                      // }
+                    />
+                  )}
+                  <Switch
+                    id={presentation.id}
+                    offLabel='Green'
+                    onChange={() =>
+                      toggleLight(
+                        presentation.id,
+
+                        presentation.green_light
+                      )
+                    }
+                    onLabel='Red'
+                  />
+                  <br />
+                  <button
+                    onClick={() =>
+                      handleDelete(localUser.id, presentation.access_key)
+                    }
+                  >
+                    Delete
+                  </button>
+                </CardPanel>
+              </Col>
+            </>
+          ))
+        ) : (
+          <Col>
+            <p>{notFound}</p>
+          </Col>
+        )}
+      </Row>
     </>
   );
 }
