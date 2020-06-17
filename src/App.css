@@ -26,6 +26,10 @@ h1 {
   height: 300px;
 }
 
+.card-text {
+  height: 40px;
+}
+
 header {
   background-color: #ff0000;
   color: white;
