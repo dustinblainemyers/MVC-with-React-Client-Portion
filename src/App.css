@@ -30,6 +30,17 @@ h1 {
   height: 40px;
 }
 
+img {
+  height: 125px;
+  display: block;
+  margin: 0 auto;
+}
+
+.delete {
+  display: block;
+  margin: 0 auto;
+}
+
 header {
   background-color: #ff0000;
   color: white;

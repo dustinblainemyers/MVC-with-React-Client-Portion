@@ -181,6 +181,7 @@ function ParticipatingMain(props) {
                   />
                   <br />
                   <button
+                    className='delete'
                     onClick={() =>
                       handleDelete(localUser.id, presentation.access_key)
                     }
