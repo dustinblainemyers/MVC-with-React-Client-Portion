@@ -28,9 +28,8 @@ class Aggregate extends Component {
   };
 
   componentDidMount() {
-    console.log("socket", this.config.api);
     this.socket = socketIOClient(
-      `${this.config.socket}?token=${this.props.test}`
+      `${this.config.socket || this.config.api}?token=${this.props.test}`
     );
     console.log("test prop", this.props.test);
 
